@@ -1,4 +1,5 @@
 // @ts-check
+import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,5 +7,9 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [daisyui],
+  // DaisyUI config
+  daisyui: {
+    themes: ["light", "dark"],
+  },
 };
