@@ -1,14 +1,14 @@
 import { createController } from "../internal/utils/controller";
 import { IUserService } from "./user.service";
 
-class _UsersController {
+class _UserController {
   constructor(private userService: IUserService) {}
 }
 
-const UsersController = createController(_UsersController, {
+const UserController = createController(_UserController, {
   async getHello(req, res) {
     res.send("Hello from users controller!");
   },
 });
 
-export default UsersController;
+export default UserController;
