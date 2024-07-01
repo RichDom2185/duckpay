@@ -4206,6 +4206,11 @@ rollup@^4.0.2, rollup@^4.13.0:
     "@rollup/rollup-win32-x64-msvc" "4.18.0"
     fsevents "~2.3.2"
 
+rsdi@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/rsdi/-/rsdi-3.0.3.tgz#b695b5dffb3c60c2079bcf815c7b6cc625e87014"
+  integrity sha512-gh/bqtVOEQBS6fiAVSsl/TsqWeXL5M0r5Hm7FWQ2YzcNAChPAeFjsjPxC7jTEnqKKRCXBmdAxXDaj/53b+EzfQ==
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
