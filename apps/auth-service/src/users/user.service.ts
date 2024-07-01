@@ -5,7 +5,7 @@ export interface IUserService {
   getUser(id: string): Promise<User | null>;
 }
 
-export class UserService implements IUserService {
+export default class UserService implements IUserService {
   constructor(private userRepository: IUserRepository) {}
 
   async getUser(id: string): Promise<User | null> {

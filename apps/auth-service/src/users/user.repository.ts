@@ -4,7 +4,7 @@ export interface IUserRepository {
   findUserById(id: string): Promise<User | null>;
 }
 
-export class UserRepository implements IUserRepository {
+export default class UserRepository implements IUserRepository {
   constructor(private db: PrismaClient) {}
 
   async findUserById(id: string): Promise<User | null> {
