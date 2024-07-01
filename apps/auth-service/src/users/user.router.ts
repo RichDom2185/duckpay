@@ -1,7 +1,10 @@
 import express from "express";
+import UserController from "./user.controller";
 
-const r = express.Router();
+function from(controller: InstanceType<typeof UserController>) {
+  const r = express.Router();
+  r.get("/", controller.getHello);
+  return r;
+}
 
-// r.get("/", usersController.getHello);
-
-export default r;
+export { from };
