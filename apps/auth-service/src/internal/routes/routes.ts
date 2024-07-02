@@ -1,6 +1,7 @@
 import express from "express";
-import userRouter from "../../users/userRouter";
+import * as userRouter from "../../users/user.router";
+import { AppDIContainer } from "../config/dependencies";
 
-export const setupRoutes = (app: express.Application) => {
-  app.use("/users", userRouter);
+export const setupRoutes = (app: express.Application, deps: AppDIContainer) => {
+  app.use("/users", userRouter.from(deps.userController));
 };
