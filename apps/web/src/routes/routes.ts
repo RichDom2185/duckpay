@@ -11,7 +11,7 @@ export const routes: RouteObject[] = [
     path: "/",
     lazy: ApplicationWrapper,
     children: [
-      { path: "dashboard", lazy: Dashboard },
+      { path: "", lazy: Dashboard },
       { path: "login", lazy: Login },
       { path: "not_found", lazy: NotFound },
     ],
