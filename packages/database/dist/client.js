@@ -15,23 +15,30 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/client.ts
 var client_exports = {};
 __export(client_exports, {
-  default: () => client_default
+  prisma: () => prisma
 });
 module.exports = __toCommonJS(client_exports);
 var import_client = require("@prisma/client");
-var prisma;
+__reExport(client_exports, require("@prisma/client"), module.exports);
+var client;
 if (process.env.NODE_ENV === "production") {
-  prisma = new import_client.PrismaClient();
+  client = new import_client.PrismaClient();
 } else {
   let globalWithPrisma = global;
   if (!globalWithPrisma.prisma) {
     globalWithPrisma.prisma = new import_client.PrismaClient();
   }
-  prisma = globalWithPrisma.prisma;
+  client = globalWithPrisma.prisma;
 }
-var client_default = prisma;
+var prisma = client;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  prisma,
+  ...require("@prisma/client")
+});
