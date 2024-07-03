@@ -34,8 +34,8 @@ const DEFAULT_TOKENS = [
           create: {
             ...token,
           },
-        })
-      )
+        }),
+      ),
     );
   } catch (error) {
     console.error(error);

@@ -6,15 +6,16 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 model Token {
-  id          String        @id @default(cuid())
+  id          String       @id @default(cuid())
   accountId   String // Microservices, separate databases
   amount      Int // in cents
   currency    String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
   transaction Transaction?
 }
 
