@@ -1,5 +1,5 @@
 import cuid from "cuid";
-import prisma from "./client";
+import { prisma } from "./client";
 
 import type { Token } from "@prisma/client";
 
@@ -34,8 +34,8 @@ const DEFAULT_TOKENS = [
           create: {
             ...token,
           },
-        }),
-      ),
+        })
+      )
     );
   } catch (error) {
     console.error(error);
