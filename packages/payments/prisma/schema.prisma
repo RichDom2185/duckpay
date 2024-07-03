@@ -1,0 +1,27 @@
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "foreignKeys"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Token {
+  id          String        @id @default(cuid())
+  accountId   String // Microservices, separate databases
+  amount      Int // in cents
+  currency    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  transaction Transaction?
+}
+
+model Transaction {
+  id       String @id @default(cuid())
+  amount   Int // +ve for deposit, -ve for withdrawal
+  currency String
+  tokenId  String @unique // One-to-one relationship
+  token    Token  @relation(fields: [tokenId], references: [id])
+}
