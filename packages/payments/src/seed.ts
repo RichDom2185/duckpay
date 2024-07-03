@@ -1,7 +1,7 @@
 import cuid from "cuid";
 import { prisma } from "./client";
 
-import type { Token } from "@prisma/client";
+import type { Token } from "@repo/payments";
 
 const accountId = cuid();
 
