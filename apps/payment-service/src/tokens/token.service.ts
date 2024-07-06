@@ -1,4 +1,5 @@
 import { Token } from "@repo/payments";
+import AccountServiceGateway from "../gateways/account-service";
 import { ITokenRepository } from "./token.repository";
 
 export interface ITokenService {
@@ -10,7 +11,10 @@ export interface ITokenService {
 }
 
 export default class TokenService implements ITokenService {
-  constructor(private tokenRepository: ITokenRepository) {}
+  constructor(
+    private accountServiceGateway: AccountServiceGateway,
+    private tokenRepository: ITokenRepository
+  ) {}
 
   async registerToken(
     tokenId: string,
@@ -28,7 +32,11 @@ export default class TokenService implements ITokenService {
   }
 
   async getAllTokensForUser(accountId: string): Promise<Array<Token> | null> {
-    // TODO: Check user exists
+    const { exists } =
+      await this.accountServiceGateway.checkAccountExists(accountId);
+    if (!exists) {
+      throw new Error("Account not found");
+    }
     return this.tokenRepository.findByAccount(accountId);
   }
 }
