@@ -2,7 +2,7 @@ import { RouteObject } from "react-router";
 
 const ApplicationWrapper = () =>
   import("../components/common/ApplicationWrapper");
-const Dashboard = () => import("../pages/Dashboard");
+const Home = () => import("../pages/Home");
 const NotFound = () => import("../pages/NotFound");
 
 export const routes: RouteObject[] = [
@@ -10,7 +10,7 @@ export const routes: RouteObject[] = [
     path: "/",
     lazy: ApplicationWrapper,
     children: [
-      { path: "", lazy: Dashboard },
+      { path: "", lazy: Home },
       { path: "not_found", lazy: NotFound },
     ],
   },
