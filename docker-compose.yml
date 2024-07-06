@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: duckpay_nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./deployment/nginx-config:/etc/nginx/conf.d:ro
