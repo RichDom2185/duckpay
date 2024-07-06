@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import ThemeSelector from "./common/buttons/ThemeSelector";
 import { useModal } from "./common/hooks/hooks";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
 import { GenerateKeyModal } from "./modals/GenerateKeyModal";
@@ -37,24 +38,37 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
 
   return (
     <>
-      <div className="mt-8 sticky top-8 text-center">
-        <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl">
-          <li>
-            <a className="tooltip" data-tip="Split">
-              <Icon className="h-5 w-5 -rotate-90" icon="tabler:arrows-split" />
-            </a>
-          </li>
-          <li>
-            <a className="tooltip" data-tip="Scan" onClick={openQRScannerModal}>
-              <Icon className="h-5 w-5" icon="tabler:qrcode" />
-            </a>
-          </li>
-          <li>
-            <a className="tooltip" data-tip="Key" onClick={openKeyModal}>
-              <Icon className="h-5 w-5" icon="tabler:key" />
-            </a>
-          </li>
-        </ul>
+      <div className="sticky top-8 mt-8">
+        <div className="text-center">
+          <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
+            <li>
+              <a className="tooltip tooltip-bottom" data-tip="Split">
+                <Icon className="-rotate-90" icon="tabler:arrows-split" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="tooltip tooltip-bottom"
+                data-tip="Scan"
+                onClick={openQRScannerModal}
+              >
+                <Icon icon="tabler:qrcode" />
+              </a>
+            </li>
+            <li>
+              <a
+                className="tooltip tooltip-bottom"
+                data-tip="Key"
+                onClick={openKeyModal}
+              >
+                <Icon icon="tabler:key" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="fixed right-8 top-8">
+          <ThemeSelector />
+        </div>
       </div>
 
       {/* Modals */}
