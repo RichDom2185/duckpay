@@ -10,6 +10,11 @@ const AccountController = createController(_AccountController, {
     const account = await this.accountService.createAccount();
     res.send(account);
   },
+  async deleteAccount(req, res) {
+    const accountId = req.params.accountId;
+    const account = await this.accountService.deleteAccount(accountId);
+    res.send(account);
+  },
 });
 
 export default AccountController;
