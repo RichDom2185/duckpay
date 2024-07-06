@@ -3,7 +3,7 @@ import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
 
-const NavBar: React.FC = () => {
+const Menu: React.FC = () => {
   const {
     isOpen: isGenerateKeyModalOpen,
     openModal: openGenerateKeyModal,
@@ -117,4 +117,7 @@ const NavBar: React.FC = () => {
   );
 };
 
-export default NavBar;
+export const Component = Menu;
+Component.displayName = "Menu";
+
+export default Menu;
