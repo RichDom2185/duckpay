@@ -1,5 +1,5 @@
-import React from 'react';
-import Swal from 'sweetalert2';
+import React from "react";
+import Swal from "sweetalert2";
 
 interface MergeModalProps {
   isOpen: boolean;
@@ -10,9 +10,13 @@ interface MergeModalProps {
   tokenId2: string;
 }
 
-
 const MergeModal: React.FC<MergeModalProps> = ({
-  isOpen, onClose, tokenAmount1, tokenAmount2, tokenId1, tokenId2
+  isOpen,
+  onClose,
+  tokenAmount1,
+  tokenAmount2,
+  tokenId1,
+  tokenId2,
 }) => {
   if (!isOpen) return null;
 
@@ -26,23 +30,37 @@ const MergeModal: React.FC<MergeModalProps> = ({
       icon: "success",
       title: "Tokens have been merged successfully",
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
     });
 
-    onClose(); // Close the modal after confirming
+    onClose();
   };
 
   return (
     <div className="modal modal-open">
       <div className="modal-box">
         <form method="dialog">
-          <button type="button" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={onClose}>✕</button>
+          <button
+            type="button"
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={onClose}
+          >
+            ✕
+          </button>
         </form>
-        <h3 className='font-bold text-lg'>Confirmation</h3>
-        <p className="py-4">Do you want to merge token <b>{tokenAmount1}</b> with <b>{tokenAmount2}</b> to create a new token with amount <b>{totalTokenAmt}</b>?</p>
+        <h3 className="font-bold text-lg">Confirmation</h3>
+        <p className="py-4">
+          Do you want to merge token <b>{tokenAmount1}</b> with{" "}
+          <b>{tokenAmount2}</b> to create a new token with amount{" "}
+          <b>{totalTokenAmt}</b>?
+        </p>
         <div className="modal-action">
-          <button className="btn" onClick={handleConfirm}>Confirm</button>
-          <button className="btn btn-ghost" onClick={onClose}>Close</button>
+          <button className="btn" onClick={handleConfirm}>
+            Confirm
+          </button>
+          <button className="btn btn-ghost" onClick={onClose}>
+            Close
+          </button>
         </div>
       </div>
     </div>
