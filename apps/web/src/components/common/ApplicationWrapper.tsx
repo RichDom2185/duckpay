@@ -1,12 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router";
+import { useThemeLoader } from "../../hooks/useThemeLoader";
 
 const ApplicationWrapper: React.FC = () => {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  useThemeLoader();
+
+  return <Outlet />;
 };
 
 export const Component = ApplicationWrapper;
