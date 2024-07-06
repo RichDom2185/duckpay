@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Gateway } from "../gateway";
 
-const ACCOUNT_SERVICE_URL = "http://account-service:8002/accounts/internal";
+const ACCOUNT_SERVICE_URL = "http://localhost:8002/internal";
 
 const client = axios.create({
   baseURL: ACCOUNT_SERVICE_URL,
@@ -19,7 +19,7 @@ class AccountServiceGateway extends Gateway {
   public async checkAccountExists(
     accountId: string
   ): Promise<{ id: string; exists: boolean }> {
-    return this.get<{ id: string; exists: boolean }>("/check-account-exists", {
+    return this.post<{ id: string; exists: boolean }>("/check-account-exists", {
       id: accountId,
     });
   }
