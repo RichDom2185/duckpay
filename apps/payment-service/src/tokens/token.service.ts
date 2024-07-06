@@ -2,13 +2,13 @@ import { Token } from "@repo/payments";
 import { ITokenRepository } from "./token.repository";
 
 export interface ITokenService {
-  getAllTokensForUser(accountId: string): Promise<Array<Token>>;
+  getAllTokensForUser(accountId: string): Promise<Array<Token> | null>;
 }
 
 export default class TokenService implements ITokenService {
   constructor(private tokenRepository: ITokenRepository) {}
 
-  async getAllTokensForUser(accountId: string): Promise<Array<Token>> {
-    return this.tokenRepository.findTokenByAccoutn(accountId);
+  async getAllTokensForUser(accountId: string): Promise<Array<Token> | null> {
+    return this.tokenRepository.findTokenByAccount(accountId);
   }
 }
