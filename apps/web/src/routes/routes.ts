@@ -16,7 +16,7 @@ export const routes: RouteObject[] = [
   },
 ];
 
-type RouteKeys = Uppercase<"Dashboard" | "Login" | "NotFound">;
+type RouteKeys = Uppercase<"Home" | "NotFound">;
 const buildRouteNames = (routes: RouteObject[], prefix = "") => {
   return routes.reduce(
     (acc, route) => {
