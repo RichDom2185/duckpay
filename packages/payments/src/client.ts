@@ -1,4 +1,4 @@
-import { PrismaClient } from "./generated/client";
+import { PrismaClient } from "../lib/generated/client";
 
 let client: PrismaClient;
 
@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 export const prisma: any = client;
-export * from "./generated/client";
+export * from "../lib/generated/client";
