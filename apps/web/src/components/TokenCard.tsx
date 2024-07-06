@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Draggable, Droppable } from "react-drag-and-drop";
-import { useModal } from "./common/hooks/hooks";
-import QrCodeModal from "./modals/QrCodeModal";
+import MergeModal from "./modals/MergeModal";
+import { Token } from "../types/types";
 
 interface TokenCardProps {
   accountId: string;
@@ -18,17 +18,17 @@ const TokenCard: React.FC<TokenCardProps> = ({
   tokenId,
   tokenAmount,
 }) => {
-  console.log(
-    `Token [accountId: ${accountId}, tokenId: ${tokenId}, Amount: ${tokenAmount}]`
-  );
-
-  const { isOpen, openModal, closeModal } = useModal();
+  console.log(`Token [accountId: ${accountId}, tokenId: ${tokenId}, Amount: ${tokenAmount}]`);
+  const [mergeModalOpen, setMergeModalOpen] = useState(false);
+  const [droppedTokenAmount, setDroppedTokenAmount] = useState("");
+  const [droppedTokenId, setDroppedTokenId] = useState("");
 
   const onDrop = (data: DropData) => {
     const parsedData = JSON.parse(data.token);
-    console.log(
-      `Dropped from [ID: ${parsedData.tokenId}, Amount: ${parsedData.tokenAmount}] to [ID: ${tokenId}, Amount: ${tokenAmount}]`
-    );
+    console.log(`Dropped from [ID: ${parsedData.tokenId}, Amount: ${parsedData.tokenAmount}] to [ID: ${tokenId}, Amount: ${tokenAmount}]`);
+    setDroppedTokenAmount(parsedData.tokenAmount);
+    setDroppedTokenId(parsedData.tokenId);
+    setMergeModalOpen(true);
   };
 
   return (
@@ -38,19 +38,18 @@ const TokenCard: React.FC<TokenCardProps> = ({
           type="token"
           data={JSON.stringify({ tokenId: tokenId, tokenAmount: tokenAmount })}
         >
-          <div
-            onClick={openModal}
-            className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg"
-          >
+          <div className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg cursor-pointer">
             {tokenAmount}
           </div>
         </Draggable>
       </Droppable>
-      <QrCodeModal
-        accountId={accountId}
-        tokenId={tokenId}
-        isOpen={isOpen}
-        onClose={closeModal}
+      <MergeModal
+        isOpen={mergeModalOpen}
+        onClose={() => setMergeModalOpen(false)}
+        tokenAmount1={tokenAmount}
+        tokenAmount2={droppedTokenAmount}
+        tokenId1={tokenId}
+        tokenId2={droppedTokenId}
       />
     </>
   );
