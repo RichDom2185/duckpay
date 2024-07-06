@@ -1,4 +1,3 @@
-import Menu from "../components/Menu";
 import Token from "../components/Token";
 
 const tokens = [
@@ -14,24 +13,21 @@ const tokens = [
   { id: 10, amount: 100 },
 ];
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
-    <>
-      <Menu />
-      <div className="flex flex-wrap justify-center items-center m-4">
-        {tokens.map((token) => (
-          <Token
-            key={token.id.toString()}
-            tokenId={token.id.toString()}
-            tokenValue={token.amount.toString()}
-          />
-        ))}
-      </div>
-    </>
+    <div className="flex flex-wrap justify-center items-center m-4">
+      {tokens.map((token) => (
+        <Token
+          key={token.id.toString()}
+          tokenId={token.id.toString()}
+          tokenValue={token.amount.toString()}
+        />
+      ))}
+    </div>
   );
 };
 
-export const Component = Home;
-Component.displayName = "Home";
+export const Component = Dashboard;
+Component.displayName = "Dashboard";
 
-export default Home;
+export default Dashboard;
