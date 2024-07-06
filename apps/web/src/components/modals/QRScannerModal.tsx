@@ -1,8 +1,10 @@
-import { Scanner } from "@yudiel/react-qr-scanner";
-import React from "react"; // Ensure React is imported if using JSX
+import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
+import React from "react";
+import Swal from "sweetalert2";
 
 interface QRScannerModalProps {
   isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
   onClose: () => void;
 }
 
@@ -13,8 +15,35 @@ const enum FACING_MODE {
 
 export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
+  setIsOpen,
   onClose,
 }) => {
+  const handleScan = (detectedCodes: IDetectedBarcode[]) => {
+    console.log(detectedCodes);
+    const qrData = detectedCodes[0].rawValue;
+
+    console.log("QR data:", qrData);
+    const parts = qrData.split(":");
+    if (parts.length === 2) {
+      const accountId = parts[0];
+      const tokenId = parts[1];
+
+      console.log("Account ID:", accountId);
+      console.log("Token ID:", tokenId);
+    }
+
+    // send API to db with accountId and tokenId
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your token has been scanned",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setIsOpen(false);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -28,7 +57,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
         </button>
         <div className="scanner-container">
           <Scanner
-            onScan={(result) => console.log(result)}
+            onScan={handleScan}
             constraints={{
               aspectRatio: 16 / 9,
               frameRate: { ideal: 12 },

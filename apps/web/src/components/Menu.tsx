@@ -4,6 +4,7 @@ import { useModal } from "./common/hooks/hooks";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
 import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
+import { Token } from "../types/types";
 
 interface MenuProps {
   tokens: Token[];
@@ -24,6 +25,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
 
   const {
     isOpen: isQRScannerModalOpen,
+    setIsOpen: setIsQRScannerModalOpen,
     openModal: openQRScannerModal,
     closeModal: closeQRScannerModal,
   } = useModal();
@@ -73,6 +75,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
 
       {/* Modals */}
       <QRScannerModal
+        setIsOpen={setIsQRScannerModalOpen}
         isOpen={isQRScannerModalOpen}
         onClose={closeQRScannerModal}
       />

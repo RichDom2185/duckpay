@@ -1,4 +1,3 @@
-interface Token {
-  tokenId: string;
-  tokenAmount: number;
-}
+import { Token as DBToken } from "@repo/payments";
+
+export type Token = DBToken;
