@@ -15,6 +15,7 @@ const TokenController = createController(_TokenController, {
     if (typeof accountId !== "string") {
       res.status(422).send("Invalid account ID");
     }
+    
     const tokens = await this.tokenService.getAllTokensForUser(
       accountId as string
     );
@@ -27,6 +28,10 @@ const TokenController = createController(_TokenController, {
       res.status(400).send("Missing account ID");
       return;
     }
+    if (typeof accountId !== "string") {
+      res.status(422).send("Invalid account ID");
+    }
+
     const tokens = await this.tokenService.registerToken(tokenId, accountId);
     res.send(tokens);
   },

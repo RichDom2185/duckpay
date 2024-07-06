@@ -12,11 +12,13 @@ const TransactionController = createController(_TransactionController, {
     if (!accountId) {
       res.status(400).send("Missing account ID");
     }
+    if (typeof accountId !== "string") {
+      res.status(422).send("Invalid account ID");
+    }
 
     if (amount == undefined) {
       res.status(400).send("Missing amount");
     }
-
     if (amount <= 0) {
       res.status(422).send("You can only deposit a positive amount");
     }
