@@ -10,6 +10,6 @@ export default class TokenService implements ITokenService {
 
   async getAllTokensForUser(accountId: string): Promise<Array<Token> | null> {
     // TODO: Check user exists
-    return this.tokenRepository.findTokenByAccount(accountId);
+    return this.tokenRepository.findByAccount(accountId);
   }
 }
