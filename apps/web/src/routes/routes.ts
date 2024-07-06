@@ -11,7 +11,7 @@ export const routes: RouteObject[] = [
     lazy: ApplicationWrapper,
     children: [
       { path: "", lazy: Home },
-      { path: "not_found", lazy: NotFound },
+      { path: "*", lazy: NotFound },
     ],
   },
 ];

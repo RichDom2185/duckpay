@@ -1,4 +1,3 @@
-import Menu from "../components/Menu";
 import Token from "../components/Token";
 
 const tokens = [
@@ -17,7 +16,6 @@ const tokens = [
 const Home: React.FC = () => {
   return (
     <>
-      <Menu />
       <div className="flex flex-wrap justify-center items-center m-4">
         {tokens.map((token) => (
           <Token
