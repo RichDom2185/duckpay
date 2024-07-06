@@ -11,14 +11,20 @@ const TransactionController = createController(_TransactionController, {
 
     if (!accountId) {
       res.status(400).send("Missing account ID");
+      return;
+    }
+    if (typeof accountId !== "string") {
+      res.status(422).send("Invalid account ID");
+      return;
     }
 
     if (amount == undefined) {
       res.status(400).send("Missing amount");
+      return;
     }
-
     if (amount <= 0) {
       res.status(422).send("You can only deposit a positive amount");
+      return;
     }
 
     const transaction = await this.transactionService.deposit(
@@ -34,6 +40,7 @@ const TransactionController = createController(_TransactionController, {
 
     if (!tokenId) {
       res.status(400).send("Missing token ID");
+      return;
     }
 
     const transaction = await this.transactionService.withdraw(
