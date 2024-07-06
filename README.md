@@ -1,56 +1,49 @@
-# Turborepo starter
+# DuckPay
 
-This is an official starter turborepo.
+> Digital cash equivalent.
 
-## Using this example
+## Project structure
 
-Run the following command:
+This project is a monorepo set up using [Turborepo](https://turbo.build).
 
-```sh
-npx create-turbo@latest -e with-prisma
+```plaintext
+.
+├── apps
+│  ├── account-service
+│  ├── payment-service
+│  └── web
+├── deployment
+│  └── nginx-config
+├── docker-compose.yml
+└── packages
+   ├── accounts
+   ├── api
+   ├── config-eslint
+   ├── config-typescript
+   └── payments
 ```
 
-## What's inside?
+* `apps` - Contains the services & applications that make up the project
+  * `account-service` - The account service backend (Express.js, TypeScript)
+  * `payment-service` - The payment service backend (Express.js, TypeScript)
+  * `web` - The frontend web application (React.js, TypeScript)
+* `deployment` - Contains the deployment configurations for the project
+  * `nginx-config` - Contains the Nginx configuration for the project
+* `docker-compose.yml` - The Docker Compose configuration for the project
+* `packages` - Contains the shared packages used across the project
+  * `accounts` - Contains the account database client (Prisma)
+  * `api` - Contains the shared API client (Axios)
+  * `config-eslint` - Contains the shared ESLint configuration
+  * `config-typescript` - Contains the shared TypeScript configuration
+  * `payments` - Contains the payment database client (Prisma)
 
-This turborepo includes the following packages/apps:
+## Deployment
 
-### Apps and Packages
-
-- `web`: a [Next.js](https://nextjs.org/) app
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/database`: [Prisma](https://prisma.io/) ORM wrapper to manage & access your database
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- [Prisma](https://prisma.io/) for database ORM
-- [Docker Compose](https://docs.docker.com/compose/) for local database
-
-### Database
-
-We use [Prisma](https://prisma.io/) to manage & access our database. As such you will need a database for this project, either locally or hosted in the cloud.
-
-To make this process easier, we offer a [`docker-compose.yml`](https://docs.docker.com/compose/) file to deploy a MySQL server locally with a new database named `turborepo` (To change this update the `MYSQL_DATABASE` environment variable in the `docker-compose.yml` file):
+The project is managed using Docker Compose. Simply run the build command to deploy:
 
 ```bash
-cd my-turborepo
-docker-compose up -d
+docker compose up
 ```
-
-Once deployed you will need to copy the `.env.example` file to `.env` in order for Prisma to have a `DATABASE_URL` environment variable to access.
-
-```bash
-cp .env.example .env
-```
-
-If you added a custom database name, or use a cloud based database, you will need to update the `DATABASE_URL` in your `.env` accordingly.
 
 Once deployed & up & running, you will need to create & deploy migrations to your database to add the necessary tables. This can be done using [Prisma Migrate](https://www.prisma.io/migrate):
 
@@ -72,39 +65,17 @@ There is slight difference between the two commands & [Prisma offers a breakdown
 
 An optional additional step is to seed some initial or fake data to your database using [Prisma's seeding functionality](https://www.prisma.io/docs/guides/database/seed-database).
 
-To do this update check the seed script located in `packages/database/src/seed.ts` & add or update any users you wish to seed to the database.
-
-Once edited run the following command to run tell Prisma to run the seed script defined in the Prisma configuration:
-
 ```bash
 yarn run db:seed
-```
-
-For further more information on migrations, seeding & more, we recommend reading through the [Prisma Documentation](https://www.prisma.io/docs/).
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```bash
-yarn run build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```bash
-yarn run dev
 ```
 
 ## Useful Links
 
 Learn more about the power of Turborepo:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+* [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+* [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+* [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+* [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+* [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+* [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
