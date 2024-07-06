@@ -8,7 +8,7 @@ interface QrCodeGeneratorProps {
 
 const QrCodeGenerator: React.FC<QrCodeGeneratorProps> = ({ data }) => {
   return (
-    <div className="flex justify-center p-4 bg-base-200">
+    <div className="flex justify-center p-4">
       <CustomQRCode
         className="qr-code"
         style={{ margin: "0 auto" }}

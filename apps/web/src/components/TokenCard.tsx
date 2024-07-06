@@ -4,6 +4,7 @@ import MergeModal from "./modals/MergeModal";
 import { useModal } from "./common/hooks/hooks";
 import QrCodeModal from "./modals/QrCodeModal";
 import { Token } from "../types/types";
+import duckpay from "../../assets/duck-transparent-bg.png";
 
 interface TokenCardProps {
   token: Token;
@@ -45,9 +46,18 @@ const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
         >
           <div
             onClick={openModal}
-            className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
+            className="card bg-base-100 image-full w-64 h-32 shadow-x shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
           >
-            {token.amount}
+            <figure>
+              <img
+                src={duckpay}
+                alt="Duck Pay"
+                className="opacity-50 translate-x-12 saturate-0"
+              />
+            </figure>
+            <div className="card-body">
+              <p className="card-title text-4xl font-bold">${token.amount}</p>
+            </div>
           </div>
         </Draggable>
       </Droppable>
