@@ -3,6 +3,7 @@ import { IAccountRepository } from "./account.repository";
 
 export interface IAccountService {
   createAccount(): Promise<Account | null>;
+  deleteAccount(accountId: string): Promise<Account | null>;
 }
 
 export default class AccountService implements IAccountService {
@@ -10,5 +11,9 @@ export default class AccountService implements IAccountService {
 
   async createAccount(): Promise<Account | null> {
     return this.accountRepository.createAccount();
+  }
+
+  async deleteAccount(accountId: string): Promise<Account | null> {
+    return this.accountRepository.deleteAccount(accountId);
   }
 }
