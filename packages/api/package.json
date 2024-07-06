@@ -10,7 +10,7 @@
     "lint": "tsc --noEmit && eslint \"src/**/*.ts*\" --max-warnings 0"
   },
   "dependencies": {
-    "@repo/database": "*",
+    "@repo/accounts": "*",
     "@repo/payments": "*",
     "axios": "^1.7.2"
   },
