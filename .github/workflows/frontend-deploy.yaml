@@ -18,6 +18,8 @@ jobs:
           cache: yarn
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
+      - name: Run Prisma code generation
+        run: yarn generate
       - name: Build Site
         run: yarn build
       - name: Deploy to GitHub Pages
