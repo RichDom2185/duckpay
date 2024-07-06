@@ -15,14 +15,14 @@ model Token {
   amount      Int // in cents
   currency    String
   createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  transaction Transaction?
+  deletedAt   DateTime?     
+  transaction Transaction[]
 }
 
 model Transaction {
   id       String @id @default(cuid())
   amount   Int // +ve for deposit, -ve for withdrawal
   currency String
-  tokenId  String @unique // One-to-one relationship
+  tokenId  String
   token    Token  @relation(fields: [tokenId], references: [id])
 }

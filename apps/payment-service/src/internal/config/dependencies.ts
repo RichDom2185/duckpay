@@ -3,6 +3,9 @@ import { DIContainer } from "rsdi";
 import TokenController from "../../tokens/token.controller";
 import TokenRepository from "../../tokens/token.repository";
 import TokenService from "../../tokens/token.service";
+import TransactionRepository from "../../transaction/transaction.repository";
+import TransactionService from "../../transaction/transaction.service";
+import TransactionController from "../../transaction/transaction.controller";
 
 export type AppDIContainer = ReturnType<typeof configureDI>;
 
@@ -14,11 +17,22 @@ export function configureDI() {
     .add("tokenRepository", ({ db }) => new TokenRepository(db))
     .add(
       "tokenService",
-      ({ tokenRepository }) => new TokenService(tokenRepository)
+      ({ tokenRepository }) => new TokenService(tokenRepository),
     )
     .add(
       "tokenController",
-      ({ tokenService }) => new TokenController(tokenService)
+      ({ tokenService }) => new TokenController(tokenService),
+    )
+    // Transactions
+    .add("transactionRepository", ({ db }) => new TransactionRepository(db))
+    .add(
+      "transactionService",
+      ({ transactionRepository, tokenRepository }) =>
+        new TransactionService(transactionRepository, tokenRepository),
+    )
+    .add(
+      "transactionController",
+      ({ transactionService }) => new TransactionController(transactionService),
     );
 
   return container;
