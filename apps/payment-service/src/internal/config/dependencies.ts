@@ -1,8 +1,8 @@
-import { PrismaClient } from "@repo/database";
+import { PrismaClient } from "@repo/payments";
 import { DIContainer } from "rsdi";
-import UserController from "../../users/user.controller";
-import MockUserRepository from "../../users/user.repository.mock";
-import UserService from "../../users/user.service";
+import TokenController from "../../tokens/token.controller";
+import TokenRepository from "../../tokens/token.repository";
+import TokenService from "../../tokens/token.service";
 
 export type AppDIContainer = ReturnType<typeof configureDI>;
 
@@ -10,13 +10,15 @@ export function configureDI() {
   const container = new DIContainer()
     // DB Configuration
     .add("db", () => new PrismaClient())
-    // Users
-    // .add("userRepository", ({ db }) => new UserRepository(db))
-    .add("userRepository", () => new MockUserRepository())
-    .add("userService", ({ userRepository }) => new UserService(userRepository))
+    // Tokens
+    .add("tokenRepository", ({ db }) => new TokenRepository(db))
     .add(
-      "userController",
-      ({ userService }) => new UserController(userService)
+      "tokenService",
+      ({ tokenRepository }) => new TokenService(tokenRepository)
+    )
+    .add(
+      "tokenController",
+      ({ tokenService }) => new TokenController(tokenService)
     );
 
   return container;
