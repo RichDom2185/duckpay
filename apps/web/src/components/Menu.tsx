@@ -1,6 +1,6 @@
 import { useModal } from "./common/hooks/hooks";
-import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
+import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
 
 interface MenuProps {
@@ -115,8 +115,5 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
     </>
   );
 };
-
-export const Component = Menu;
-Component.displayName = "Menu";
 
 export default Menu;
