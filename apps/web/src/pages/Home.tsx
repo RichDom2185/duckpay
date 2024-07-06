@@ -1,29 +1,29 @@
 import Menu from "../components/Menu";
 import Token from "../components/Token";
 
-const tokens = [
-  { id: 1, amount: 10 },
-  { id: 2, amount: 20 },
-  { id: 3, amount: 30 },
-  { id: 4, amount: 40 },
-  { id: 5, amount: 50 },
-  { id: 6, amount: 60 },
-  { id: 7, amount: 70 },
-  { id: 8, amount: 80 },
-  { id: 9, amount: 90 },
-  { id: 10, amount: 100 },
+const tokens: Token[] = [
+  { tokenId: "id1", tokenAmount: 10 },
+  { tokenId: "id2", tokenAmount: 20 },
+  { tokenId: "id3", tokenAmount: 30 },
+  { tokenId: "id4", tokenAmount: 40 },
+  { tokenId: "id5", tokenAmount: 50 },
+  { tokenId: "id6", tokenAmount: 60 },
+  { tokenId: "id7", tokenAmount: 70 },
+  { tokenId: "id8", tokenAmount: 80 },
+  { tokenId: "id9", tokenAmount: 90 },
+  { tokenId: "id10", tokenAmount: 100 },
 ];
 
 const Home: React.FC = () => {
   return (
     <>
-      <Menu />
+      <Menu tokens={tokens} />
       <div className="flex flex-wrap justify-center items-center m-4">
         {tokens.map((token) => (
           <Token
-            key={token.id.toString()}
-            tokenId={token.id.toString()}
-            tokenValue={token.amount.toString()}
+            key={token.tokenId}
+            tokenId={token.tokenId}
+            tokenAmount={token.tokenAmount.toString()}
           />
         ))}
       </div>

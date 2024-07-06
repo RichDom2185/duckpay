@@ -3,7 +3,11 @@ import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
 
-const Menu: React.FC = () => {
+interface MenuProps {
+  tokens: Token[];
+}
+
+const Menu: React.FC<MenuProps> = ({ tokens }) => {
   const {
     isOpen: isGenerateKeyModalOpen,
     openModal: openGenerateKeyModal,
@@ -21,6 +25,14 @@ const Menu: React.FC = () => {
     openModal: openQRScannerModal,
     closeModal: closeQRScannerModal,
   } = useModal();
+
+  const openKeyModal = () => {
+    if (tokens.length === 0) {
+      openEnterKeyModal();
+    } else {
+      openGenerateKeyModal();
+    }
+  };
 
   return (
     <>
@@ -65,11 +77,7 @@ const Menu: React.FC = () => {
             </a>
           </li>
           <li>
-            <a
-              className="tooltip"
-              data-tip="Key"
-              onClick={openGenerateKeyModal}
-            >
+            <a className="tooltip" data-tip="Key" onClick={openKeyModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -86,15 +94,6 @@ const Menu: React.FC = () => {
                   d="m16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1-4.069 0l-.301-.301l-6.558 6.558a2 2 0 0 1-1.239.578L5.172 21H4a1 1 0 0 1-.993-.883L3 20v-1.172a2 2 0 0 1 .467-1.284l.119-.13L4 17h2v-2h2v-2l2.144-2.144l-.301-.301a2.877 2.877 0 0 1 0-4.069l2.643-2.643a2.877 2.877 0 0 1 4.069 0M15 9h.01"
                 />
               </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              className="tooltip"
-              data-tip="Dummy button"
-              onClick={openEnterKeyModal}
-            >
-              enter key
             </a>
           </li>
         </ul>
