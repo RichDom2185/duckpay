@@ -36,8 +36,8 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <ul className="menu menu-horizontal bg-base-200 rounded-box mt-8">
+      <div className="mt-8 sticky top-8 text-center">
+        <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl">
           <li>
             <a className="tooltip" data-tip="Split">
               <svg
