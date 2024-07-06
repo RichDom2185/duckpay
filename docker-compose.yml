@@ -7,3 +7,33 @@ services:
       - 8000:80
     volumes:
       - ./deployment/nginx-config:/etc/nginx/conf.d:ro
+    networks:
+      - duckpay_network
+  payment-service:
+    build:
+      context: .
+      dockerfile: apps/payment-service/Dockerfile
+    container_name: duckpay_payment_service
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - 8001:8001
+    networks:
+      - duckpay_network
+  account-service:
+    build:
+      context: .
+      dockerfile: apps/account-service/Dockerfile
+    container_name: duckpay_account_service
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - 8002:8002
+    networks:
+      - duckpay_network
+
+networks:
+  duckpay_network:
+    driver: bridge
