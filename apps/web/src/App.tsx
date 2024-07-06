@@ -1,19 +1,13 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import { RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
+import { routes } from "./routes/routes";
+
+const router = createBrowserRouter(routes, {
+  future: { v7_relativeSplatPath: true },
+});
 
 const App: React.FC = () => {
-  return (
-    <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

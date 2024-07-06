@@ -1,11 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router";
-import Menu from "../Menu";
 
 const ApplicationWrapper: React.FC = () => {
   return (
     <>
-      <Menu />
       <Outlet />
     </>
   );
