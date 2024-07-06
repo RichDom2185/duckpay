@@ -1,6 +1,7 @@
 import { useModal } from "./common/hooks/hooks";
 import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
+import { QRScannerModal } from "./modals/QRScannerModal";
 
 const NavBar: React.FC = () => {
   const {
@@ -13,6 +14,12 @@ const NavBar: React.FC = () => {
     isOpen: isEnterKeyModalOpen,
     openModal: openEnterKeyModal,
     closeModal: closeEnterKeyModal,
+  } = useModal();
+
+  const {
+    isOpen: isQRScannerModalOpen,
+    openModal: openQRScannerModal,
+    closeModal: closeQRScannerModal,
   } = useModal();
 
   return (
@@ -42,7 +49,7 @@ const NavBar: React.FC = () => {
             </a>
           </li>
           <li>
-            <a className="tooltip" data-tip="Scan">
+            <a className="tooltip" data-tip="Scan" onClick={openQRScannerModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -94,6 +101,10 @@ const NavBar: React.FC = () => {
       </div>
 
       {/* Modals */}
+      <QRScannerModal
+        isOpen={isQRScannerModalOpen}
+        onClose={closeQRScannerModal}
+      />
       <GenerateKeyModal
         isOpen={isGenerateKeyModalOpen}
         onClose={closeGenerateKeyModal}
