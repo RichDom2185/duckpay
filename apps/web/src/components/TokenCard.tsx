@@ -45,7 +45,7 @@ const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
         >
           <div
             onClick={openModal}
-            className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg"
+            className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
           >
             {token.amount}
           </div>
