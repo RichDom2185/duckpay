@@ -35,7 +35,6 @@ export default class TokenRepository implements ITokenRepository {
   }
 
   async deleteById(id: string): Promise<Token> {
-    console.log("Deleting token with id repo!!!", id);
     return this.db.token.update({
       where: { id, deletedAt: null },
       data: { deletedAt: new Date()},
