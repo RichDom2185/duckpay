@@ -20,6 +20,16 @@ const TokenController = createController(_TokenController, {
     );
     res.send(tokens);
   },
+  async registerTokenForUser(req, res) {
+    const { accountId, tokenId } = req.body;
+    // TODO: Validate params
+    if (!accountId) {
+      res.status(400).send("Missing account ID");
+      return;
+    }
+    const tokens = await this.tokenService.registerToken(tokenId, accountId);
+    res.send(tokens);
+  },
 });
 
 export default TokenController;
