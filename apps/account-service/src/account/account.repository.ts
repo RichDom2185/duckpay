@@ -1,6 +1,7 @@
-import { PrismaClient, Account } from "@repo/accounts";
+import { Account, PrismaClient } from "@repo/accounts";
 
 export interface IAccountRepository {
+  findById(accountId: string): Promise<Account | null>;
   createAccount(): Promise<Account | null>;
   deleteAccount(accountId: string): Promise<Account | null>;
 }
@@ -8,9 +9,15 @@ export interface IAccountRepository {
 export default class AccountRepository implements IAccountRepository {
   constructor(private db: PrismaClient) {}
 
+  findById(accountId: string): Promise<Account | null> {
+    return this.db.account.findUnique({
+      where: { id: accountId },
+    });
+  }
+
   async createAccount(): Promise<Account> {
     return this.db.account.create({
-      data: {}
+      data: {},
     });
   }
 

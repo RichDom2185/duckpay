@@ -4,6 +4,7 @@ import { IAccountRepository } from "./account.repository";
 export interface IAccountService {
   createAccount(): Promise<Account | null>;
   deleteAccount(accountId: string): Promise<Account | null>;
+  checkAccountExists(accountId: string): Promise<boolean>;
 }
 
 export default class AccountService implements IAccountService {
@@ -15,5 +16,10 @@ export default class AccountService implements IAccountService {
 
   async deleteAccount(accountId: string): Promise<Account | null> {
     return this.accountRepository.deleteAccount(accountId);
+  }
+
+  async checkAccountExists(accountId: string): Promise<boolean> {
+    const account = await this.accountRepository.findById(accountId);
+    return !!account;
   }
 }
