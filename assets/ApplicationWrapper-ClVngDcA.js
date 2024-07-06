@@ -1,0 +1,1 @@
+import{u as r,r as s,j as o,O as a}from"./index-DEDsLrDO.js";const p=()=>{const t=r(e=>e.session.theme);s.useEffect(()=>{const e=document.querySelector("html");return e==null||e.setAttribute("data-theme",t),()=>{e==null||e.removeAttribute("data-theme")}},[t])},n=()=>(p(),o.jsx(a,{})),u=n;u.displayName="ApplicationWrapper";export{u as Component,n as default};
