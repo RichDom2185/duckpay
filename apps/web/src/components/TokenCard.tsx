@@ -3,7 +3,8 @@ import { Draggable, Droppable } from "react-drag-and-drop";
 import { useModal } from "./common/hooks/hooks";
 import QrCodeModal from "./modals/QrCodeModal";
 
-interface TokenProps {
+interface TokenCardProps {
+  accountId: string;
   tokenId: string;
   tokenAmount: string;
 }
@@ -12,8 +13,14 @@ interface DropData {
   token: string;
 }
 
-const Token: React.FC<TokenProps> = ({ tokenId, tokenAmount }) => {
-  console.log(`Token [ID: ${tokenId}, Amount: ${tokenAmount}]`);
+const TokenCard: React.FC<TokenCardProps> = ({
+  accountId,
+  tokenId,
+  tokenAmount,
+}) => {
+  console.log(
+    `Token [accountId: ${accountId}, tokenId: ${tokenId}, Amount: ${tokenAmount}]`
+  );
 
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -39,9 +46,14 @@ const Token: React.FC<TokenProps> = ({ tokenId, tokenAmount }) => {
           </div>
         </Draggable>
       </Droppable>
-      <QrCodeModal tokenId={tokenId} isOpen={isOpen} onClose={closeModal} />
+      <QrCodeModal
+        accountId={accountId}
+        tokenId={tokenId}
+        isOpen={isOpen}
+        onClose={closeModal}
+      />
     </>
   );
 };
 
-export default Token;
+export default TokenCard;
