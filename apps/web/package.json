@@ -11,14 +11,15 @@
   },
   "dependencies": {
     "@yudiel/react-qr-scanner": "^2.0.4",
-    "react": "^18.3.1",
     "custom-qr-code": "^1.1.5",
+    "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-drag-and-drop": "^3.0.0",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
+    "@iconify/react": "^5.0.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/react": "^18.3.3",
