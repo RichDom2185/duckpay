@@ -1,6 +1,6 @@
 import { CustomQRCode } from "custom-qr-code/react";
 import React from "react";
-import duck from "../assets/images/duck-transparent-bg.png";
+import duck from "../../assets/duck-transparent-bg.png";
 
 interface QrCodeGeneratorProps {
   data: string; // QR data passed as a prop
@@ -24,7 +24,7 @@ const QrCodeGenerator: React.FC<QrCodeGeneratorProps> = ({ data }) => {
             type: "radial",
             colorStops: [
               { offset: 0, color: "#1E00FF" },
-              { offset: 5, color: "#00FFFF" },
+              { offset: 5, color: "#4267B2" },
             ],
           },
           type: "extra-rounded",
@@ -34,10 +34,11 @@ const QrCodeGenerator: React.FC<QrCodeGeneratorProps> = ({ data }) => {
           type: "extra-rounded",
         }}
         cornersDotOptions={{
-          color: "#ffffff",
+          color: "#0038E0",
+          type: "dot",
         }}
         backgroundOptions={{
-          color: "#ffffff",
+          color: "#000000",
         }}
         imageOptions={{
           crossOrigin: "anonymous",
