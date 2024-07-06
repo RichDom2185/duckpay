@@ -12,7 +12,7 @@ const TokenValueLabel: React.FC<TokenValueLabelProps> = ({
       <span className="text-3xl font-bold" style={{ color: "#4267B2" }}>
         {amount}
       </span>
-      <span className="text-xl" style={{ color: "#4267B2" }}>
+      <span className="text-2xl" style={{ color: "#4267B2" }}>
         {currency}
       </span>
     </div>
