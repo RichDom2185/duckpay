@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Draggable, Droppable } from "react-drag-and-drop";
 import MergeModal from "./modals/MergeModal";
-import { Token } from "../types/types";
 
 interface TokenCardProps {
   accountId: string;
