@@ -1,6 +1,6 @@
 import { Transaction } from "@repo/payments";
-import { ITransactionRepository } from "./transaction.repository";
 import { ITokenRepository } from "../tokens/token.repository";
+import { ITransactionRepository } from "./transaction.repository";
 
 export interface ITransactionService {
   deposit(accountId: string, amount: number): Promise<Transaction | null>;
@@ -10,13 +10,13 @@ export interface ITransactionService {
 export default class TransactionService implements ITransactionService {
   constructor(
     private transactionRepository: ITransactionRepository,
-    private tokenRepository: ITokenRepository,
+    private tokenRepository: ITokenRepository
   ) {}
 
   async deposit(
     accountId: string,
     amount: number,
-    currency: string = "SGD",
+    currency: string = "SGD"
   ): Promise<Transaction | null> {
     const token = await this.tokenRepository.create({
       accountId,
