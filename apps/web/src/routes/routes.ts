@@ -2,6 +2,7 @@ import { RouteObject } from "react-router";
 
 const ApplicationWrapper = () =>
   import("../components/common/ApplicationWrapper");
+const Atm = () => import("../pages/Atm");
 const Home = () => import("../pages/Home");
 const NotFound = () => import("../pages/NotFound");
 
@@ -11,6 +12,7 @@ export const routes: RouteObject[] = [
     lazy: ApplicationWrapper,
     children: [
       { path: "", lazy: Home },
+      { path: "/atm", lazy: Atm },
       { path: "*", lazy: NotFound }
     ]
   }
