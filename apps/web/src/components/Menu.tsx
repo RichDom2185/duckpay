@@ -1,6 +1,9 @@
 import { Icon } from "@iconify/react";
+import clsx from "clsx";
+import React, { useCallback } from "react";
 import duckpay from "../../assets/duck-transparent-bg.png";
-import { useAppSelector } from "../redux/store";
+import { SplitActions } from "../redux/slices/splitSlice";
+import { useAppDispatch, useAppSelector } from "../redux/store";
 import ThemeSelector from "./common/buttons/ThemeSelector";
 import { useModal } from "./common/hooks/hooks";
 import { DuckModal } from "./modals/DuckModal";
@@ -9,6 +12,13 @@ import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
 
 const Menu: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const isSplitMode = useAppSelector((state) => state.split.isSplitMode);
+
+  const toggleSplitMode = useCallback(() => {
+    dispatch(SplitActions.toggleSplitMode());
+  }, [dispatch]);
+
   const tokens = useAppSelector((state) => state.session.tokens) ?? [];
   const {
     isOpen: isGenerateKeyModalOpen,
@@ -61,7 +71,14 @@ const Menu: React.FC = () => {
           </div>
           <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
             <li>
-              <a className="tooltip tooltip-bottom" data-tip="Split">
+              <a
+                className={clsx(
+                  "tooltip tooltip-bottom",
+                  isSplitMode && "bg-primary text-primary-content"
+                )}
+                data-tip="Split"
+                onClick={toggleSplitMode}
+              >
                 <Icon className="-rotate-90" icon="tabler:arrows-split" />
               </a>
             </li>
