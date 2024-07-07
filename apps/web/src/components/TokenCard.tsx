@@ -15,9 +15,6 @@ interface DropData {
 }
 
 const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
-  console.log(
-    `Token [accountId: ${token.accountId}, tokenId: ${token.id}, Amount: ${token.amount}]`
-  );
   const [mergeModalOpen, setMergeModalOpen] = useState(false);
   const [droppedTokenAmount, setDroppedTokenAmount] = useState("");
   const [droppedTokenId, setDroppedTokenId] = useState("");
