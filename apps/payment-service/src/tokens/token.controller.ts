@@ -18,7 +18,11 @@ const TokenController = createController(_TokenController, {
     }
 
     const oneWeekLater = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    res.cookie('accountId', accountId, { expires: oneWeekLater, sameSite: true, secure: true });
+    res.cookie("accountId", accountId, {
+      expires: oneWeekLater,
+      sameSite: true,
+      secure: true
+    });
 
     const tokens = await this.tokenService.getAllTokensForUser(accountId);
     res.json(tokens);
