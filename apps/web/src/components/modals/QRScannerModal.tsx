@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 import { api } from "../../api/api";
 import { SessionActions } from "../../redux/slices/sessionSlice";
 import { useAppDispatch } from "../../redux/store";
-import { Token } from "../../types/types";
 import Modal from "../common/modals/Modal";
+import toast from "react-hot-toast";
 
 interface QRScannerModalProps {
   isOpen: boolean;
@@ -36,24 +36,24 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
     console.log("Token ID:", tokenId);
 
     // send API to db with accountId and tokenId
-    try {
-      const updatedUserTokens: Token[] = await api.tokens.registerTokenForUser(
-        accountId,
-        tokenId
-      );
-      dispatch(SessionActions.setTokens(updatedUserTokens));
-    } catch (err) {
-      console.log(err);
-    }
-
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Your token has been scanned",
-      showConfirmButton: false,
-      timer: 1500
-    });
-    onClose();
+    api.tokens
+      .registerTokenForUser(accountId, tokenId)
+      .then((tokens) => {
+        dispatch(SessionActions.setTokens(tokens));
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your token has been scanned",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        onClose();
+      });
   };
 
   return (

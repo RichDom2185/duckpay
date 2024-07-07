@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import Modal from "../common/modals/Modal";
 import { copyToClipboard } from "../common/utils/utils";
+import { useAppSelector } from "../../redux/store";
 
 interface GenerateKeyModalProps {
   isOpen: boolean;
@@ -12,18 +13,12 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
   isOpen,
   onClose
 }) => {
-  const displayGeneratedKeyWithHyphen = (generatedKey: string): string => {
-    return generatedKey.replace(/(.{5})/g, "$1-").slice(0, -1);
-  };
-
   const handleCopy = async () => {
     const success = await copyToClipboard(generatedKey);
     setHasCopied(success);
   };
 
-  const generatedKey = "jdf0s9fyBqfi5A4Q2ysP";
-
-  const displayGeneratedKey = displayGeneratedKeyWithHyphen(generatedKey);
+  const generatedKey = useAppSelector((state) => state.session.accountId) ?? "";
 
   const [hasCopied, setHasCopied] = React.useState<boolean>(false);
 
@@ -40,7 +35,7 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
         <input
           type="text"
           className="bg-gray-50 border border-gray-300 text-gray-500 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={displayGeneratedKey}
+          value={generatedKey}
           disabled
           readOnly
         />
@@ -59,6 +54,12 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
             )}
           </span>
         </button>
+      </div>
+      <div>
+        <i className="text-gray-500">
+          Keep this safe and private. Anyone can use this key to get all your
+          tokens.
+        </i>
       </div>
       <div className="flex justify-end">
         <button className="btn" onClick={onClose}>
