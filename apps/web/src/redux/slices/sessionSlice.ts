@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Token } from "../../types/types";
 
 type SessionState = {
   theme: "light" | "dark" | "auto";
+  tokens: Token[] | undefined;
 };
 
 const defaultSession: SessionState = {
-  theme: "auto"
+  theme: "auto",
+  tokens: undefined
 };
 
 const sessionSlice = createSlice({
@@ -14,6 +17,9 @@ const sessionSlice = createSlice({
   reducers: {
     setTheme(state, action) {
       state.theme = action.payload;
+    },
+    setTokens(state, action) {
+      state.tokens = action.payload;
     }
   }
 });

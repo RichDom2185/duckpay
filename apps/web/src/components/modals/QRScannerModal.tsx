@@ -2,12 +2,13 @@ import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import React from "react";
 import Swal from "sweetalert2";
 import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
+import { useAppDispatch } from "../../redux/store";
 import { Token } from "../../types/types";
 import Modal from "../common/modals/Modal";
 
 interface QRScannerModalProps {
   isOpen: boolean;
-  setTokens: (tokens: Token[]) => void;
   onClose: () => void;
 }
 
@@ -18,9 +19,10 @@ const enum FACING_MODE {
 
 export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
-  setTokens,
   onClose
 }) => {
+  const dispatch = useAppDispatch();
+
   const handleScan = async (detectedCodes: IDetectedBarcode[]) => {
     console.log(detectedCodes);
     const qrData = detectedCodes[0].rawValue;
@@ -39,7 +41,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
         accountId,
         tokenId
       );
-      setTokens(updatedUserTokens);
+      dispatch(SessionActions.setTokens(updatedUserTokens));
     } catch (err) {
       console.log(err);
     }
