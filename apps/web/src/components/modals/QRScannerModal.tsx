@@ -47,29 +47,27 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
 
   return (
     <Modal isOpen={isOpen}>
-      <div className="modal-box">
-        <button
-          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          onClick={onClose}
-        >
-          ✕
+      <button
+        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        onClick={onClose}
+      >
+        ✕
+      </button>
+      <div className="scanner-container">
+        <Scanner
+          onScan={handleScan}
+          constraints={{
+            aspectRatio: 16 / 9,
+            frameRate: { ideal: 12 },
+            deviceId: { ideal: "0" },
+            facingMode: { ideal: FACING_MODE.ENVIRONMENT }
+          }}
+        />
+      </div>
+      <div className="flex justify-end space-x-3">
+        <button className="btn" onClick={onClose}>
+          Close
         </button>
-        <div className="scanner-container">
-          <Scanner
-            onScan={handleScan}
-            constraints={{
-              aspectRatio: 16 / 9,
-              frameRate: { ideal: 12 },
-              deviceId: { ideal: "0" },
-              facingMode: { ideal: FACING_MODE.ENVIRONMENT }
-            }}
-          />
-        </div>
-        <div className="flex justify-end space-x-3">
-          <button className="btn" onClick={onClose}>
-            Close
-          </button>
-        </div>
       </div>
     </Modal>
   );

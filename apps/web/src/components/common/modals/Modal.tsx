@@ -8,7 +8,7 @@ type Props = {
 const Modal: React.FC<Props> = ({ children, isOpen }) => {
   return (
     <dialog className="modal" open={isOpen}>
-      {children}
+      <div className="modal-box">{children}</div>
     </dialog>
   );
 };
