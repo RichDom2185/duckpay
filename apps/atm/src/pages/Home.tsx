@@ -3,6 +3,7 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import duckpay from "../../assets/duck-transparent-bg.png";
+import Page from "../components/common/Page";
 import { SessionActions } from "../redux/slices/sessionSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { RouteNames } from "../routes/routes";
@@ -39,7 +40,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col gap-y-16 justify-center items-center px-6 py-4 max-w-5xl mx-auto h-screen">
+    <Page>
       <div className="mx-auto flex gap-x-8 items-center">
         <img className="h-64" src={duckpay} alt="DuckPay Logo" />
         <h2 className="font-semibold text-9xl tracking-wider">ATM</h2>
@@ -94,7 +95,7 @@ const Home: React.FC = () => {
           </button>
         </div>
       )}
-    </div>
+    </Page>
   );
 };
 
