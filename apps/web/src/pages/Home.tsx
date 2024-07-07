@@ -9,7 +9,7 @@ const tokens: Token[] = [
     amount: 10,
     currency: "SGD",
     createdAt: new Date("2023-01-01"),
-    updatedAt: new Date("2023-01-02")
+    deletedAt: null
   },
   {
     id: "id28y5-y34qv8nu38fq58n3fqd8m-f85u-dv5yn98w4ngy5894yfytb40qq3dnq-fn-qnv",
@@ -17,7 +17,7 @@ const tokens: Token[] = [
     amount: 20,
     currency: "SGD",
     createdAt: new Date("2023-02-01"),
-    updatedAt: new Date("2023-02-05")
+    deletedAt: null
   },
   {
     id: "id346729y69384yng-98qef84vng-w5awntpiehpqn-g49fuN{NUy53g(gy35w938ny5o",
@@ -25,7 +25,7 @@ const tokens: Token[] = [
     amount: 30,
     currency: "SGD",
     createdAt: new Date("2023-03-01"),
-    updatedAt: new Date("2023-03-05")
+    deletedAt: null
   },
   {
     id: "id4viert9-enuqg-948r84NY9W5YGNYG46yy8wre8ur-43uqm9utpnwrhpRNPIwnignp",
@@ -33,7 +33,7 @@ const tokens: Token[] = [
     amount: 40,
     currency: "SGD",
     createdAt: new Date("2023-04-01"),
-    updatedAt: new Date("2023-04-03")
+    deletedAt: null
   },
   {
     id: "id5fjvinrt895gq-u6qub4tnuesdamievnifu[rfNU%EUGNVMRNBe9mfwv{[vW3U905[",
@@ -41,7 +41,7 @@ const tokens: Token[] = [
     amount: 50,
     currency: "SGD",
     createdAt: new Date("2023-05-01"),
-    updatedAt: new Date("2023-05-06")
+    deletedAt: null
   },
   {
     id: "id6HVP#8QhrhcHVCHERHEWHw35VRPX9AWVeEMCSXRUE9Uuepvtaebtebyhapcvmpapvp",
@@ -49,7 +49,7 @@ const tokens: Token[] = [
     amount: 60,
     currency: "SGD",
     createdAt: new Date("2023-06-01"),
-    updatedAt: new Date("2023-06-04")
+    deletedAt: null
   },
   {
     id: "id7u4tnv3fqnP8N5U38-UMJVNTTM--MVR-mtvwmqvtmquvmaw-a5894u31-53v914=1",
@@ -57,7 +57,7 @@ const tokens: Token[] = [
     amount: 70,
     currency: "SGD",
     createdAt: new Date("2023-07-01"),
-    updatedAt: new Date("2023-07-05")
+    deletedAt: null
   },
   {
     id: "id8vn-t4uv5y4yu=u-2ud9skuduf4f--U4F5DQ2MV4UTN45uvu4ww5ftu8138v4-cm",
@@ -65,7 +65,7 @@ const tokens: Token[] = [
     amount: 80,
     currency: "SGD",
     createdAt: new Date("2023-08-01"),
-    updatedAt: new Date("2023-08-03")
+    deletedAt: null
   },
   {
     id: "id90anev0tryq0PNYV83tMVR8Rtnv402vtmwerc88rb-wftueu9jmfosiahhyeuy08",
@@ -73,7 +73,7 @@ const tokens: Token[] = [
     amount: 90,
     currency: "SGD",
     createdAt: new Date("2023-09-01"),
-    updatedAt: new Date("2023-09-05")
+    deletedAt: null
   },
   {
     id: "id10t2h89y56-12hncrjmP8UP4933QTu9-U842Y4HTHPVN9W1-M493U2Mmr9uteryp",
@@ -81,7 +81,7 @@ const tokens: Token[] = [
     amount: 100,
     currency: "SGD",
     createdAt: new Date("2023-10-01"),
-    updatedAt: new Date("2023-10-02")
+    deletedAt: null
   }
 ];
 
