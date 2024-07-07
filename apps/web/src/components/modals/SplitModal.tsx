@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
 import { SplitActions } from "../../redux/slices/splitSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import Modal from "../common/modals/Modal";
@@ -8,6 +11,9 @@ const SplitModal: React.FC = () => {
   const dispatch = useAppDispatch();
   const selectedTokenAmount = useAppSelector(
     (state) => state.split.selectedTokenAmount
+  );
+  const selectedTokenId = useAppSelector(
+    (state) => state.split.selectedTokenId ?? ""
   );
   const isOpen = useAppSelector((state) => state.split.isModalOpen);
   const [splitAmount, setSplitAmount] = useState("");
@@ -37,19 +43,28 @@ const SplitModal: React.FC = () => {
   };
 
   const handleConfirm = () => {
-    // call api split here
     const validatedValues = validateSplitInput(splitAmount);
     if (validatedValues) {
-      console.log(`Splitting token: ${validatedValues.join(", ")}`);
-
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Tokens have been split successfully",
-        showConfirmButton: false,
-        timer: 900
-      });
-      handleClose();
+      // API to split
+      api.tokens
+        .splitToken(selectedTokenId, validatedValues)
+        .then((tokens) => {
+          dispatch(SessionActions.removeTokens([selectedTokenId]));
+          dispatch(SessionActions.addTokens(tokens));
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Tokens have been split successfully",
+            showConfirmButton: false,
+            timer: 900
+          });
+        })
+        .catch(() => {
+          toast.error("Something went wrong.");
+        })
+        .finally(() => {
+          handleClose();
+        });
     }
   };
 
