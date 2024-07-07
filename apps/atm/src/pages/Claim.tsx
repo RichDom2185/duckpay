@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import duckpay from "../../assets/duck-transparent-bg.png";
 import { api } from "../api/api";
 import Page from "../components/common/Page";
+import { RouteNames } from "../routes/routes";
 import Constants from "../utils/constants";
 
 const Claim: React.FC = () => {
@@ -18,6 +20,7 @@ const Claim: React.FC = () => {
     []
   );
 
+  const navigate = useNavigate();
   const onSubmit = useCallback(() => {
     api.transactions.createDeposit(amount, accountId).then((tx) => {
       Swal.fire({
@@ -27,8 +30,9 @@ const Claim: React.FC = () => {
         showConfirmButton: false,
         timer: 1500
       });
+      setTimeout(() => navigate(RouteNames.DONE), 1500);
     });
-  }, [accountId, amount]);
+  }, [accountId, amount, navigate]);
 
   return (
     <Page>
