@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import clsx from "clsx";
 import React, { useCallback } from "react";
 import duckpay from "../../assets/duck-transparent-bg.png";
 import { SplitActions } from "../redux/slices/splitSlice";
@@ -71,7 +72,10 @@ const Menu: React.FC = () => {
           <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
             <li>
               <a
-                className={`tooltip tooltip-bottom ${isSplitMode ? "bg-primary text-primary-content" : ""}`}
+                className={clsx(
+                  "tooltip tooltip-bottom",
+                  isSplitMode && "bg-primary text-primary-content"
+                )}
                 data-tip="Split"
                 onClick={toggleSplitMode}
               >
