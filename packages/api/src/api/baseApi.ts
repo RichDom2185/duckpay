@@ -8,6 +8,7 @@ export const setBackendUrl = (url: string | undefined) => {
 };
 
 const client = axios.create({
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json"
   }
