@@ -17,7 +17,8 @@
     "format:ci": "prettier --list-different \"**/*.{ts,tsx,js,jsx}\"",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
     "generate": "turbo run generate",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "nginx": "./deployment/start-nginx-local.sh"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
