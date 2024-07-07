@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import { Draggable, Droppable } from "react-drag-and-drop";
 import MergeModal from "./modals/MergeModal";
+import { useModal } from "./common/hooks/hooks";
+import QrCodeModal from "./modals/QrCodeModal";
+import { Token } from "../types/types";
+import duckpay from "../../assets/duck-transparent-bg.png";
 
 interface TokenCardProps {
-  accountId: string;
-  tokenId: string;
-  tokenAmount: string;
+  token: Token;
 }
 
 interface DropData {
   token: string;
 }
 
-const TokenCard: React.FC<TokenCardProps> = ({
-  accountId,
-  tokenId,
-  tokenAmount,
-}) => {
-  console.log(`Token [accountId: ${accountId}, tokenId: ${tokenId}, Amount: ${tokenAmount}]`);
+const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
   const [mergeModalOpen, setMergeModalOpen] = useState(false);
   const [droppedTokenAmount, setDroppedTokenAmount] = useState("");
   const [droppedTokenId, setDroppedTokenId] = useState("");
 
+  const { isOpen, openModal, closeModal } = useModal();
+
   const onDrop = (data: DropData) => {
-    const parsedData = JSON.parse(data.token);
-    console.log(`Dropped from [ID: ${parsedData.tokenId}, Amount: ${parsedData.tokenAmount}] to [ID: ${tokenId}, Amount: ${tokenAmount}]`);
-    setDroppedTokenAmount(parsedData.tokenAmount);
-    setDroppedTokenId(parsedData.tokenId);
+    const token = JSON.parse(data.token);
+    console.log(
+      `Dropped from [ID: ${token.tokenId}, Amount: ${token.tokenAmount}]`
+    );
+    setDroppedTokenAmount(token.tokenAmount);
+    setDroppedTokenId(token.tokenId);
     setMergeModalOpen(true);
   };
 
@@ -35,19 +36,35 @@ const TokenCard: React.FC<TokenCardProps> = ({
       <Droppable types={["token"]} onDrop={onDrop} style={{ margin: "0.5rem" }}>
         <Draggable
           type="token"
-          data={JSON.stringify({ tokenId: tokenId, tokenAmount: tokenAmount })}
+          data={JSON.stringify({
+            tokenId: token.id,
+            tokenAmount: token.amount,
+          })}
         >
-          <div className="w-32 h-32 bg-slate-400 flex items-center justify-center text-white text-3xl font-bold rounded shadow-lg cursor-pointer">
-            {tokenAmount}
+          <div
+            onClick={openModal}
+            className="card bg-base-100 image-full w-64 h-32 shadow-x shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
+          >
+            <figure>
+              <img
+                src={duckpay}
+                alt="Duck Pay"
+                className="opacity-50 translate-x-12 saturate-0"
+              />
+            </figure>
+            <div className="card-body">
+              <p className="card-title text-4xl font-bold">${token.amount}</p>
+            </div>
           </div>
         </Draggable>
       </Droppable>
+      <QrCodeModal token={token} isOpen={isOpen} onClose={closeModal} />
       <MergeModal
         isOpen={mergeModalOpen}
         onClose={() => setMergeModalOpen(false)}
-        tokenAmount1={tokenAmount}
+        tokenAmount1={token.amount.toString()}
         tokenAmount2={droppedTokenAmount}
-        tokenId1={tokenId}
+        tokenId1={token.id}
         tokenId2={droppedTokenId}
       />
     </>

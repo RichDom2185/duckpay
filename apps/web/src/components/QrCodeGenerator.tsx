@@ -3,12 +3,12 @@ import React from "react";
 import duck from "../../assets/duck-transparent-bg.png";
 
 interface QrCodeGeneratorProps {
-  data: string; // QR data passed as a prop
+  data: string;
 }
 
 const QrCodeGenerator: React.FC<QrCodeGeneratorProps> = ({ data }) => {
   return (
-    <div className="flex justify-center p-4 bg-base-200">
+    <div className="flex justify-center p-4">
       <CustomQRCode
         className="qr-code"
         style={{ margin: "0 auto" }}
