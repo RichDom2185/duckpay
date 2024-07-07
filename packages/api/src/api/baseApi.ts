@@ -51,7 +51,7 @@ class BaseApi {
       headers: {
         Accept: "application/json"
       },
-      withCredentials: true,
+      withCredentials: true
     };
     return config;
   }

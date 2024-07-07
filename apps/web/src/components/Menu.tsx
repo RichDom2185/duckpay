@@ -15,7 +15,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
   const {
     isOpen: isGenerateKeyModalOpen,
     openModal: openGenerateKeyModal,
-    closeModal: closeGenerateKeyModal,
+    closeModal: closeGenerateKeyModal
   } = useModal();
 
   const {
