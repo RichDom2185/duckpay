@@ -7,8 +7,8 @@ const client = axios.create({
   baseURL: ACCOUNT_SERVICE_URL,
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json",
-  },
+    "Content-Type": "application/json"
+  }
 });
 
 class AccountServiceGateway extends Gateway {
@@ -20,7 +20,7 @@ class AccountServiceGateway extends Gateway {
     accountId: string
   ): Promise<{ id: string; exists: boolean }> {
     return this.get<{ id: string; exists: boolean }>("/check-account-exists", {
-      id: accountId,
+      id: accountId
     });
   }
 }

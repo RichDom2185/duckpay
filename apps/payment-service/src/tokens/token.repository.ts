@@ -5,7 +5,7 @@ export interface ITokenRepository {
   findByAccount(accountId: string): Promise<Array<Token>>;
   update(token: Token): Promise<Token>;
   create(
-    token: Pick<Token, "amount" | "currency" | "accountId">,
+    token: Pick<Token, "amount" | "currency" | "accountId">
   ): Promise<Token>;
   deleteById(id: string): Promise<Token>;
 }
@@ -24,12 +24,12 @@ export default class TokenRepository implements ITokenRepository {
   async update(token: Token): Promise<Token> {
     return this.db.token.update({
       where: { id: token.id, deletedAt: null },
-      data: token,
+      data: token
     });
   }
 
   async create(
-    token: Pick<Token, "amount" | "currency" | "accountId">,
+    token: Pick<Token, "amount" | "currency" | "accountId">
   ): Promise<Token> {
     return this.db.token.create({ data: token });
   }
@@ -37,7 +37,7 @@ export default class TokenRepository implements ITokenRepository {
   async deleteById(id: string): Promise<Token> {
     return this.db.token.update({
       where: { id, deletedAt: null },
-      data: { deletedAt: new Date()},
+      data: { deletedAt: new Date() }
     });
   }
 }

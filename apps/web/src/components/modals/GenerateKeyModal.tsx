@@ -9,7 +9,7 @@ interface GenerateKeyModalProps {
 
 export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
   isOpen,
-  onClose,
+  onClose
 }) => {
   const displayGeneratedKeyWithHyphen = (generatedKey: string): string => {
     return generatedKey.replace(/(.{5})/g, "$1-").slice(0, -1);

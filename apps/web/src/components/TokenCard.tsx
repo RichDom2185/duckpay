@@ -38,7 +38,7 @@ const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
           type="token"
           data={JSON.stringify({
             tokenId: token.id,
-            tokenAmount: token.amount,
+            tokenAmount: token.amount
           })}
         >
           <div

@@ -1,19 +1,18 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   env: {
     node: true,
-    es6: true,
+    es6: true
   },
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
+  parser: "@typescript-eslint/parser",
   overrides: [
     {
-      files: ["**/__tests__/**/*"],
-      env: {
-        jest: true,
-      },
-    },
+      files: ["*.js?(x)", "*.ts?(x)"]
+    }
   ],
+  rules: {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 };

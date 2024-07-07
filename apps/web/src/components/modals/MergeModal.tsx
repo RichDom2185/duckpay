@@ -16,7 +16,7 @@ const MergeModal: React.FC<MergeModalProps> = ({
   tokenAmount1,
   tokenAmount2,
   tokenId1,
-  tokenId2,
+  tokenId2
 }) => {
   if (!isOpen) return null;
 
@@ -30,7 +30,7 @@ const MergeModal: React.FC<MergeModalProps> = ({
       icon: "success",
       title: "Tokens have been merged successfully",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1500
     });
 
     onClose();

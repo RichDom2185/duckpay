@@ -11,24 +11,24 @@ export default class AccountRepository implements IAccountRepository {
 
   findById(accountId: string): Promise<Account | null> {
     return this.db.account.findUnique({
-      where: { id: accountId },
+      where: { id: accountId }
     });
   }
 
   async createAccount(): Promise<Account> {
     return this.db.account.create({
-      data: {},
+      data: {}
     });
   }
 
   async deleteAccount(accountId: string): Promise<Account> {
     return this.db.account.update({
       where: {
-        id: accountId,
+        id: accountId
       },
       data: {
-        deletedAt: new Date(),
-      },
+        deletedAt: new Date()
+      }
     });
   }
 }

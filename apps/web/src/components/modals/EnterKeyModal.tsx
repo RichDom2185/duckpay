@@ -8,7 +8,7 @@ interface EnterKeyModalProps {
 
 export const EnterKeyModal: React.FC<EnterKeyModalProps> = ({
   isOpen,
-  onClose,
+  onClose
 }) => {
   const [enteredKey, setEnteredKey] = useState("");
 

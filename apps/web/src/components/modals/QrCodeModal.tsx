@@ -12,7 +12,7 @@ interface QrCodeModalProps {
 const QrCodeModal: React.FC<QrCodeModalProps> = ({
   token,
   isOpen,
-  onClose,
+  onClose
 }) => {
   if (!isOpen) return null;
 
