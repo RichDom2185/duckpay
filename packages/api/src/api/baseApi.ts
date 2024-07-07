@@ -50,8 +50,7 @@ class BaseApi {
       baseURL: host?.concat(this._basePath) ?? this._basePath,
       headers: {
         Accept: "application/json"
-      },
-      withCredentials: true
+      }
     };
     return config;
   }
