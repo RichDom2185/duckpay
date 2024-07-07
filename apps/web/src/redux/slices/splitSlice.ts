@@ -43,4 +43,5 @@ const splitSlice = createSlice({
 });
 
 export const SplitActions = splitSlice.actions;
+
 export default splitSlice.reducer;
