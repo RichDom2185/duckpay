@@ -23,11 +23,6 @@ const TimeoutModal: React.FC = () => {
     }
   }, [isTimeout]);
 
-  useEffect(() => {
-    const timeout = setTimeout(handleTimeout, TIMEOUT_SECONDS * 1000);
-    return () => clearTimeout(timeout);
-  }, [handleTimeout]);
-
   const [timerState, setTimerState] = useState(TIMEOUT_SECONDS);
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,6 +31,12 @@ const TimeoutModal: React.FC = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (timerState === 0) {
+      handleTimeout();
+    }
+  }, [handleTimeout, timerState]);
 
   return (
     <Modal
