@@ -1,8 +1,9 @@
 import Menu from "../components/Menu";
 import TokenCard from "../components/TokenCard";
 import { Token } from "../types/types";
+import { useState } from "react";
 
-const tokens: Token[] = [
+const testTokens: Token[] = [
   {
     id: "id1sbdkjabskfjdbsaljbfaj3025uy8913u498h9hw3hr9qhsbljasbaslbflsdbfguhse",
     accountId: "test",
@@ -86,9 +87,11 @@ const tokens: Token[] = [
 ];
 
 const Home: React.FC = () => {
+  const [tokens, setTokens] = useState<Token[]>(testTokens);
+
   return (
     <>
-      <Menu tokens={tokens} />
+      <Menu tokens={tokens} setTokens={setTokens} />
       <div className="flex flex-wrap justify-center items-center m-4">
         {tokens.map((token) => (
           <TokenCard token={token} />

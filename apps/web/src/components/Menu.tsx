@@ -10,9 +10,10 @@ import { DuckModal } from "./modals/DuckModal";
 
 interface MenuProps {
   tokens: Token[];
+  setTokens: (tokens: Token[]) => void;
 }
 
-const Menu: React.FC<MenuProps> = ({ tokens }) => {
+const Menu: React.FC<MenuProps> = ({ tokens, setTokens }) => {
   const {
     isOpen: isGenerateKeyModalOpen,
     openModal: openGenerateKeyModal,
@@ -97,6 +98,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
       {/* Modals */}
       <QRScannerModal
         setIsOpen={setIsQRScannerModalOpen}
+        setTokens={setTokens}
         isOpen={isQRScannerModalOpen}
         onClose={closeQRScannerModal}
       />

@@ -1,9 +1,12 @@
 import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import React from "react";
 import Swal from "sweetalert2";
+import { api } from "../../api/api";
+import { Token } from "../../types/types";
 
 interface QRScannerModalProps {
   isOpen: boolean;
+  setTokens: (tokens: Token[]) => void;
   setIsOpen: (open: boolean) => void;
   onClose: () => void;
 }
@@ -15,24 +18,32 @@ const enum FACING_MODE {
 
 export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
+  setTokens,
   setIsOpen,
   onClose
 }) => {
-  const handleScan = (detectedCodes: IDetectedBarcode[]) => {
+  const handleScan = async (detectedCodes: IDetectedBarcode[]) => {
     console.log(detectedCodes);
     const qrData = detectedCodes[0].rawValue;
 
     console.log("QR data:", qrData);
     const parts = qrData.split(":");
-    if (parts.length === 2) {
-      const accountId = parts[0];
-      const tokenId = parts[1];
+    const accountId = parts[0];
+    const tokenId = parts[1];
 
-      console.log("Account ID:", accountId);
-      console.log("Token ID:", tokenId);
-    }
+    console.log("Account ID:", accountId);
+    console.log("Token ID:", tokenId);
 
     // send API to db with accountId and tokenId
+    try {
+      const updatedUserTokens: Token[] = await api.tokens.registerTokenForUser(
+        accountId,
+        tokenId
+      );
+      setTokens(updatedUserTokens);
+    } catch (err) {
+      console.log(err);
+    }
 
     Swal.fire({
       position: "center",
