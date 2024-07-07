@@ -29,6 +29,7 @@ export const EnterKeyModal: React.FC<EnterKeyModalProps> = ({
       .getTokensUnderAccount(value)
       .then((tokens) => {
         dispatch(SessionActions.setTokens(tokens));
+        dispatch(SessionActions.setAccountId(value));
       })
       .catch(() => {
         toast.error("Something went wrong.");

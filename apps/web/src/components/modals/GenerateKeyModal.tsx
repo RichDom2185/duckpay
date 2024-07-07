@@ -1,7 +1,10 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "../common/modals/Modal";
 import { copyToClipboard } from "../common/utils/utils";
+import { useDispatch } from "react-redux";
+import { SessionActions } from "../../redux/slices/sessionSlice";
+import { useAppSelector } from "../../redux/store";
 
 interface GenerateKeyModalProps {
   isOpen: boolean;
@@ -21,7 +24,7 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
     setHasCopied(success);
   };
 
-  const generatedKey = "jdf0s9fyBqfi5A4Q2ysP";
+  const generatedKey = useAppSelector((state) => state.session.accountId) ?? "";
 
   const displayGeneratedKey = displayGeneratedKeyWithHyphen(generatedKey);
 
