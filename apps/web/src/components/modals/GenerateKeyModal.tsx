@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import Modal from "../common/modals/Modal";
 import { copyToClipboard } from "../common/utils/utils";
 
 interface GenerateKeyModalProps {
@@ -26,10 +27,8 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
 
   const [hasCopied, setHasCopied] = React.useState<boolean>(false);
 
-  if (!isOpen) return null;
-
   return (
-    <dialog className="modal" open>
+    <Modal isOpen={isOpen}>
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -68,6 +67,6 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
           </button>
         </div>
       </div>
-    </dialog>
+    </Modal>
   );
 };
