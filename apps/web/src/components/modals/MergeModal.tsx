@@ -1,6 +1,10 @@
 import React from "react";
 import Swal from "sweetalert2";
 import Modal from "../common/modals/Modal";
+import { api } from "../../api/api";
+import { useDispatch } from "react-redux";
+import { SessionActions } from "../../redux/slices/sessionSlice";
+import toast from "react-hot-toast";
 
 interface MergeModalProps {
   isOpen: boolean;
@@ -19,20 +23,32 @@ const MergeModal: React.FC<MergeModalProps> = ({
   tokenId1,
   tokenId2
 }) => {
+  const dispatch = useDispatch();
   const totalTokenAmt = Number(tokenAmount1) + Number(tokenAmount2);
 
   const handleConfirm = () => {
     console.log(`Merging tokens ${tokenId1} and ${tokenId2}`);
 
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Tokens have been merged successfully",
-      showConfirmButton: false,
-      timer: 1500
-    });
-
-    onClose();
+    // API to merge
+    api.tokens
+      .mergeTokens([tokenId1, tokenId2])
+      .then((tokens) => {
+        dispatch(SessionActions.setTokens(tokens));
+        console.log("Successfully merged tokens.");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Tokens have been merged successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        onClose();
+      });
   };
 
   return (
