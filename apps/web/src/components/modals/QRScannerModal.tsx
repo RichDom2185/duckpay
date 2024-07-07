@@ -5,7 +5,6 @@ import Modal from "../common/modals/Modal";
 
 interface QRScannerModalProps {
   isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
   onClose: () => void;
 }
 
@@ -16,7 +15,6 @@ const enum FACING_MODE {
 
 export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
-  setIsOpen,
   onClose
 }) => {
   const handleScan = (detectedCodes: IDetectedBarcode[]) => {
@@ -42,7 +40,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
       showConfirmButton: false,
       timer: 1500
     });
-    setIsOpen(false);
+    onClose();
   };
 
   return (
