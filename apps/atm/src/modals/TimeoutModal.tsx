@@ -16,6 +16,12 @@ const TimeoutModal: React.FC = () => {
   }, [dispatch]);
 
   const isTimeout = useAppSelector((state) => state.session.isTimeout);
+  // Reset timer whenever the modal is redisplayed
+  useEffect(() => {
+    if (isTimeout === undefined) {
+      setTimerState(TIMEOUT_SECONDS);
+    }
+  }, [isTimeout]);
 
   useEffect(() => {
     const timeout = setTimeout(handleTimeout, TIMEOUT_SECONDS * 1000);
