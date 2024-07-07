@@ -1,9 +1,10 @@
 import axios, { AxiosPromise, AxiosRequestConfig, isAxiosError } from "axios";
 
-let backendUrl = "http://localhost:8000";
+const defaultBackendUrl = "http://localhost:8000";
+let backendUrl = defaultBackendUrl;
 
-export const setBackendUrl = (url: string) => {
-  backendUrl = url;
+export const setBackendUrl = (url: string | undefined) => {
+  backendUrl = url || defaultBackendUrl;
 };
 
 const client = axios.create({
