@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import Swal from "sweetalert2";
 import duckpay from "../../assets/duck-transparent-bg.png";
+import { api } from "../api/api";
 import Page from "../components/common/Page";
 import Constants from "../utils/constants";
 
@@ -8,10 +10,25 @@ const Claim: React.FC = () => {
   const [amount] = useState(Math.floor(Math.random() * 15) * 10);
   const [accountId, setAccountId] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > Constants.ACCOUNT_KEY_LENGTH) return;
-    setAccountId(e.target.value);
-  };
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
+    (e) => {
+      if (e.target.value.length > Constants.ACCOUNT_KEY_LENGTH) return;
+      setAccountId(e.target.value);
+    },
+    []
+  );
+
+  const onSubmit = useCallback(() => {
+    api.transactions.createDeposit(amount, accountId).then((tx) => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Successfully deposited ${tx.currency}${tx.amount} to account ${accountId}!`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    });
+  }, [accountId, amount]);
 
   return (
     <Page>
@@ -41,6 +58,7 @@ const Claim: React.FC = () => {
         <button
           className="btn btn-block btn-neutral"
           disabled={accountId.length !== Constants.ACCOUNT_KEY_LENGTH}
+          onClick={onSubmit}
         >
           Claim Amount
         </button>
