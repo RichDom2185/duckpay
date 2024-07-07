@@ -1,7 +1,7 @@
 import { Account } from "@repo/accounts";
-import AccountApi from "./accountApi";
+import AccountBaseApi from "./accountBaseApi";
 
-export class AccountsApi extends AccountApi {
+export class AccountsApi extends AccountBaseApi {
   constructor() {
     super();
     this.extendBasePath("/accounts");

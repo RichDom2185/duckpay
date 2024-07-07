@@ -1,7 +1,7 @@
 import { Token } from "@repo/payments";
-import PaymentApi from "./paymentApi";
+import PaymentBaseApi from "./paymentBaseApi";
 
-export class TokensApi extends PaymentApi {
+export class TokensApi extends PaymentBaseApi {
   constructor() {
     super();
     this.extendBasePath("/tokens");
