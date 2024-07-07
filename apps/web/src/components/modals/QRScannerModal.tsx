@@ -44,7 +44,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   };
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClickOutside={onClose}>
       <button
         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         onClick={onClose}

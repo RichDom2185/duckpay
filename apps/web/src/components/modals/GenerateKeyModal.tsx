@@ -28,7 +28,7 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
   const [hasCopied, setHasCopied] = React.useState<boolean>(false);
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClickOutside={onClose}>
       <button
         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         onClick={onClose}
