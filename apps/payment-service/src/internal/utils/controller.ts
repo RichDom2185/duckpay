@@ -6,7 +6,7 @@ type ControllerMethods<T> = {
 
 export const createController = <
   C extends new (...args: any[]) => any,
-  M extends ControllerMethods<InstanceType<C>>,
+  M extends ControllerMethods<InstanceType<C>>
 >(
   baseClass: C,
   controllerMethods: M
@@ -18,6 +18,6 @@ export const createController = <
         instance[key] = controllerMethods[key].bind(instance);
       }
       return instance;
-    },
+    }
   });
 };

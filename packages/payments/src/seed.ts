@@ -4,19 +4,19 @@ import { prisma } from "./client";
 const accountId1 = "clya1jleh00003b6xsw0y6793";
 const amounts1 = Array.from(
   { length: 20 },
-  () => Math.floor(Math.random() * 100) + 1,
+  () => Math.floor(Math.random() * 100) + 1
 );
 
 const accountId2 = "25r53dknfsler1jj43243989d";
 const amounts2 = Array.from(
   { length: 30 },
-  () => Math.floor(Math.random() * 100) + 1,
+  () => Math.floor(Math.random() * 100) + 1
 );
 
 const accountId3 = "1234dsagdadlekelrleklelke";
 const amounts3 = Array.from(
   { length: 12 },
-  () => Math.floor(Math.random() * 100) + 1,
+  () => Math.floor(Math.random() * 100) + 1
 );
 
 const generateTokens = (accountId: string, amounts: number[]) => {
@@ -25,7 +25,7 @@ const generateTokens = (accountId: string, amounts: number[]) => {
     id: cuid(),
     accountId,
     amount,
-    currency: DEFAULT_CURRENCY,
+    currency: DEFAULT_CURRENCY
   }));
 };
 
@@ -41,16 +41,16 @@ const DEFAULT_TOKENS = [...tokens1, ...tokens2, ...tokens3];
       DEFAULT_TOKENS.map((token) =>
         prisma.token.upsert({
           where: {
-            id: token.id!,
+            id: token.id!
           },
           update: {
-            ...token,
+            ...token
           },
           create: {
-            ...token,
-          },
+            ...token
+          }
         })
-      ),
+      )
     );
   } catch (error) {
     console.error(error);

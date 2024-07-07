@@ -21,13 +21,13 @@ export default class TransactionService implements ITransactionService {
     const token = await this.tokenRepository.create({
       accountId,
       amount: amount,
-      currency,
+      currency
     });
 
     return this.transactionRepository.create({
       currency,
       amount,
-      tokenId: token.id,
+      tokenId: token.id
     });
   }
 
@@ -37,7 +37,7 @@ export default class TransactionService implements ITransactionService {
     return this.transactionRepository.create({
       tokenId: token.id,
       amount: -token.amount,
-      currency: token.currency,
+      currency: token.currency
     });
   }
 }

@@ -10,13 +10,13 @@ interface QRScannerModalProps {
 
 const enum FACING_MODE {
   USER = "user",
-  ENVIRONMENT = "environment",
+  ENVIRONMENT = "environment"
 }
 
 export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
   setIsOpen,
-  onClose,
+  onClose
 }) => {
   const handleScan = (detectedCodes: IDetectedBarcode[]) => {
     console.log(detectedCodes);
@@ -39,7 +39,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
       icon: "success",
       title: "Your token has been scanned",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1500
     });
     setIsOpen(false);
   };
@@ -62,7 +62,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
               aspectRatio: 16 / 9,
               frameRate: { ideal: 12 },
               deviceId: { ideal: "0" },
-              facingMode: { ideal: FACING_MODE.ENVIRONMENT },
+              facingMode: { ideal: FACING_MODE.ENVIRONMENT }
             }}
           />
         </div>

@@ -5,7 +5,7 @@ import type { Account } from "@repo/accounts";
 const DEFAULT_ACCOUNTS = [
   { id: "clya1jleh00003b6xsw0y6793" },
   { id: "25r53dknfsler1jj43243989d" },
-  { id:  "1234dsagdadlekelrleklelke"},
+  { id: "1234dsagdadlekelrleklelke" }
 ] satisfies Partial<Account>[];
 
 (async () => {
@@ -14,16 +14,16 @@ const DEFAULT_ACCOUNTS = [
       DEFAULT_ACCOUNTS.map((account) =>
         prisma.account.upsert({
           where: {
-            id: account.id!,
+            id: account.id!
           },
           update: {
-            ...account,
+            ...account
           },
           create: {
-            ...account,
-          },
+            ...account
+          }
         })
-      ),
+      )
     );
   } catch (error) {
     console.error(error);

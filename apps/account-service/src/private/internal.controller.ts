@@ -10,7 +10,7 @@ const InternalController = createController(_InternalController, {
     const id = req.body.id;
     const exists = await this.accountService.checkAccountExists(id);
     res.json({ id, exists });
-  },
+  }
 });
 
 export default InternalController;

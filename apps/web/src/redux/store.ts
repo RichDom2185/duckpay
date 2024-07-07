@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { rootReducer } from "./reducers/rootReducer";
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: rootReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

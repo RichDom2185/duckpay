@@ -17,9 +17,7 @@ const TokenController = createController(_TokenController, {
       return;
     }
 
-    const tokens = await this.tokenService.getAllTokensForUser(
-      accountId
-    );
+    const tokens = await this.tokenService.getAllTokensForUser(accountId);
     res.send(tokens);
   },
   async registerTokenForUser(req, res) {
@@ -36,7 +34,7 @@ const TokenController = createController(_TokenController, {
 
     const tokens = await this.tokenService.registerToken(tokenId, accountId);
     res.send(tokens);
-  },
+  }
 });
 
 export default TokenController;

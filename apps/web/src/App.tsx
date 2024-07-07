@@ -5,7 +5,7 @@ import { store } from "./redux/store";
 import { routes } from "./routes/routes";
 
 const router = createBrowserRouter(routes, {
-  future: { v7_relativeSplatPath: true },
+  future: { v7_relativeSplatPath: true }
 });
 
 const App: React.FC = () => {

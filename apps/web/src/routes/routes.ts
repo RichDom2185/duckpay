@@ -11,9 +11,9 @@ export const routes: RouteObject[] = [
     lazy: ApplicationWrapper,
     children: [
       { path: "", lazy: Home },
-      { path: "*", lazy: NotFound },
-    ],
-  },
+      { path: "*", lazy: NotFound }
+    ]
+  }
 ];
 
 type RouteKeys = Uppercase<"Home" | "NotFound">;
@@ -24,7 +24,7 @@ const buildRouteNames = (routes: RouteObject[], prefix = "") => {
       if (route.children) {
         acc = {
           ...acc,
-          ...buildRouteNames(route.children, prefix + route.path),
+          ...buildRouteNames(route.children, prefix + route.path)
         };
       } else if (key) {
         acc[key as RouteKeys] = route.path!;

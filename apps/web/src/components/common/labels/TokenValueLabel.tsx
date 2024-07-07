@@ -5,7 +5,7 @@ interface TokenValueLabelProps {
 
 const TokenValueLabel: React.FC<TokenValueLabelProps> = ({
   amount,
-  currency,
+  currency
 }) => {
   return (
     <div className="flex items-center space-x-2 justify-center pb-4">

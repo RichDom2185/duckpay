@@ -5,7 +5,7 @@ type SessionState = {
 };
 
 const defaultSession: SessionState = {
-  theme: "auto",
+  theme: "auto"
 };
 
 const sessionSlice = createSlice({
@@ -14,8 +14,8 @@ const sessionSlice = createSlice({
   reducers: {
     setTheme(state, action) {
       state.theme = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const SessionActions = sessionSlice.actions;

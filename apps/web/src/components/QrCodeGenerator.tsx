@@ -24,25 +24,25 @@ const QrCodeGenerator: React.FC<QrCodeGeneratorProps> = ({ data }) => {
             type: "radial",
             colorStops: [
               { offset: 0, color: "#1E00FF" },
-              { offset: 5, color: "#4267B2" },
-            ],
+              { offset: 5, color: "#4267B2" }
+            ]
           },
-          type: "extra-rounded",
+          type: "extra-rounded"
         }}
         cornersSquareOptions={{
           color: "#00BFFF",
-          type: "extra-rounded",
+          type: "extra-rounded"
         }}
         cornersDotOptions={{
           color: "#0038E0",
-          type: "dot",
+          type: "dot"
         }}
         backgroundOptions={{
-          color: "#000000",
+          color: "#000000"
         }}
         imageOptions={{
           crossOrigin: "anonymous",
-          margin: 5,
+          margin: 5
         }}
       />
     </div>

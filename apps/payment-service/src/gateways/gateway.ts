@@ -2,7 +2,7 @@ import {
   AxiosInstance,
   AxiosPromise,
   AxiosRequestConfig,
-  isAxiosError,
+  isAxiosError
 } from "axios";
 
 export abstract class Gateway {

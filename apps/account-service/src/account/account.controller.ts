@@ -14,7 +14,7 @@ const AccountController = createController(_AccountController, {
     const accountId = req.params.accountId;
     const account = await this.accountService.deleteAccount(accountId);
     res.send(account);
-  },
+  }
 });
 
 export default AccountController;

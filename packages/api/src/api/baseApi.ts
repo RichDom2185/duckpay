@@ -5,8 +5,8 @@ const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8080";
 const client = axios.create({
   baseURL: BACKEND_URL,
   headers: {
-    "Content-Type": "application/json",
-  },
+    "Content-Type": "application/json"
+  }
 });
 
 class BaseApi {
@@ -49,7 +49,7 @@ class BaseApi {
     const config: AxiosRequestConfig = {
       baseURL: host?.concat(this._basePath) ?? this._basePath,
       headers: {
-        Accept: "application/json",
+        Accept: "application/json"
       },
       withCredentials: true,
     };

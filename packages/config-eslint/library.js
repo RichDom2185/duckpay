@@ -8,28 +8,28 @@ module.exports = {
   plugins: ["only-warn"],
   globals: {
     React: true,
-    JSX: true,
+    JSX: true
   },
   env: {
     node: true,
-    es2020: true,
+    es2020: true
   },
   settings: {
     "import/resolver": {
       typescript: {
-        project,
-      },
-    },
+        project
+      }
+    }
   },
   ignorePatterns: [
     // Ignore dotfiles
     ".*.js",
     "node_modules/",
-    "dist/",
+    "dist/"
   ],
   overrides: [
     {
-      files: ["*.js?(x)", "*.ts?(x)"],
-    },
-  ],
+      files: ["*.js?(x)", "*.ts?(x)"]
+    }
+  ]
 };

@@ -21,14 +21,14 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
   const {
     isOpen: isEnterKeyModalOpen,
     openModal: openEnterKeyModal,
-    closeModal: closeEnterKeyModal,
+    closeModal: closeEnterKeyModal
   } = useModal();
 
   const {
     isOpen: isQRScannerModalOpen,
     setIsOpen: setIsQRScannerModalOpen,
     openModal: openQRScannerModal,
-    closeModal: closeQRScannerModal,
+    closeModal: closeQRScannerModal
   } = useModal();
 
   const openKeyModal = () => {
