@@ -92,6 +92,9 @@ export default class TokenService implements ITokenService {
     if (totalAmount !== tokenToSplit.amount) {
       throw new Error("Total amount does not match token amount");
     }
+    if (amounts.some((a) => a <= 0)) {
+      throw new Error("Amount of each token must be positive");
+    }
     return Promise.all(
       amounts.map((amount) =>
         this.tokenRepository.create({

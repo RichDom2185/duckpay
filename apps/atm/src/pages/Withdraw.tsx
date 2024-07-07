@@ -33,7 +33,7 @@ const Withdraw: React.FC = () => {
             showConfirmButton: false,
             timer: 1500
           });
-          navigate(RouteNames.DONE);
+          setTimeout(() => navigate(RouteNames.DONE), 1500);
         })
         .catch(() => {
           toast.error("Something went wrong.");
