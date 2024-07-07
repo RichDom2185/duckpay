@@ -37,7 +37,7 @@ const buildRouteNames = (routes: RouteObject[], prefix = "") => {
           ...buildRouteNames(route.children, prefix + route.path)
         };
       } else if (key) {
-        acc[key as RouteKeys] = route.path!;
+        acc[key as RouteKeys] = prefix + route.path!;
       }
       return acc;
     },
