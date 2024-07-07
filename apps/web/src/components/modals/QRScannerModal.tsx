@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { api } from "../../api/api";
 import { SessionActions } from "../../redux/slices/sessionSlice";
 import { useAppDispatch } from "../../redux/store";
-import { Token } from "../../types/types";
 import Modal from "../common/modals/Modal";
 import toast from "react-hot-toast";
 
