@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
+import duckpay from "../../assets/duck-transparent-bg.png";
+import { Token } from "../types/types";
 import ThemeSelector from "./common/buttons/ThemeSelector";
 import { useModal } from "./common/hooks/hooks";
+import { DuckModal } from "./modals/DuckModal";
 import { EnterKeyModal } from "./modals/EnterKeyModal";
 import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
-import { Token } from "../types/types";
-import duckpay from "../../assets/duck-transparent-bg.png";
-import { DuckModal } from "./modals/DuckModal";
 
 interface MenuProps {
   tokens: Token[];
@@ -28,7 +28,6 @@ const Menu: React.FC<MenuProps> = ({ tokens, setTokens }) => {
 
   const {
     isOpen: isQRScannerModalOpen,
-    setIsOpen: setIsQRScannerModalOpen,
     openModal: openQRScannerModal,
     closeModal: closeQRScannerModal
   } = useModal();
@@ -97,7 +96,6 @@ const Menu: React.FC<MenuProps> = ({ tokens, setTokens }) => {
 
       {/* Modals */}
       <QRScannerModal
-        setIsOpen={setIsQRScannerModalOpen}
         setTokens={setTokens}
         isOpen={isQRScannerModalOpen}
         onClose={closeQRScannerModal}
