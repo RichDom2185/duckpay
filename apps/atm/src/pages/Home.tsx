@@ -1,9 +1,11 @@
 import { useIdle } from "@mantine/hooks";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import duckpay from "../../assets/duck-transparent-bg.png";
 import { SessionActions } from "../redux/slices/sessionSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
+import { RouteNames } from "../routes/routes";
 
 const TIMEOUT_SECONDS = 10;
 
@@ -33,6 +35,8 @@ const Home: React.FC = () => {
   }, [dispatch, isTimeout]);
 
   // const [animateGrowing, setAnimateGrowing] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-y-16 justify-center items-center px-6 py-4 max-w-5xl mx-auto h-screen">
@@ -73,6 +77,7 @@ const Home: React.FC = () => {
               "font-semibold text-4xl",
               "tracking-wider"
             )}
+            onClick={() => navigate(RouteNames.DEPOSIT)}
           >
             Deposit
           </button>
@@ -83,6 +88,7 @@ const Home: React.FC = () => {
               "font-semibold text-4xl",
               "tracking-wider"
             )}
+            onClick={() => navigate(RouteNames.WITHDRAW)}
           >
             Withdraw
           </button>

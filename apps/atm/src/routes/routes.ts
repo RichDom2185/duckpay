@@ -3,6 +3,8 @@ import { RouteObject } from "react-router";
 const ApplicationWrapper = () =>
   import("../components/common/ApplicationWrapper");
 const Home = () => import("../pages/Home");
+const Deposit = () => import("../../../atm/src/pages/Deposit");
+const Withdraw = () => import("../../../atm/src/pages/Withdraw");
 const NotFound = () => import("../pages/NotFound");
 
 export const routes: RouteObject[] = [
@@ -11,12 +13,14 @@ export const routes: RouteObject[] = [
     lazy: ApplicationWrapper,
     children: [
       { path: "", lazy: Home },
+      { path: "deposit", lazy: Deposit },
+      { path: "withdraw", lazy: Withdraw },
       { path: "*", lazy: NotFound }
     ]
   }
 ];
 
-type RouteKeys = Uppercase<"Home" | "NotFound">;
+type RouteKeys = Uppercase<"Home" | "Deposit" | "Withdraw" | "NotFound">;
 const buildRouteNames = (routes: RouteObject[], prefix = "") => {
   return routes.reduce(
     (acc, route) => {
