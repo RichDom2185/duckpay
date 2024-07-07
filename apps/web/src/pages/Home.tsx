@@ -94,7 +94,7 @@ const Home: React.FC = () => {
       <Menu tokens={tokens} setTokens={setTokens} />
       <div className="flex flex-wrap justify-center items-center m-4">
         {tokens.map((token) => (
-          <TokenCard token={token} />
+          <TokenCard key={token.id} token={token} />
         ))}
       </div>
     </>
