@@ -1,6 +1,6 @@
 import BaseApi from "../baseApi";
 
-class PaymentApi extends BaseApi {
+class PaymentBaseApi extends BaseApi {
   private _extendPath = "/payments";
 
   constructor() {
@@ -9,4 +9,4 @@ class PaymentApi extends BaseApi {
   }
 }
 
-export default PaymentApi;
+export default PaymentBaseApi;

@@ -11,11 +11,11 @@ export default class AccountService implements IAccountService {
   constructor(private accountRepository: IAccountRepository) {}
 
   async createAccount(): Promise<Account | null> {
-    return this.accountRepository.createAccount();
+    return this.accountRepository.create();
   }
 
   async deleteAccount(accountId: string): Promise<Account | null> {
-    return this.accountRepository.deleteAccount(accountId);
+    return this.accountRepository.deleteById(accountId);
   }
 
   async checkAccountExists(accountId: string): Promise<boolean> {

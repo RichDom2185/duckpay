@@ -8,12 +8,12 @@ class _AccountController {
 const AccountController = createController(_AccountController, {
   async createAccount(req, res) {
     const account = await this.accountService.createAccount();
-    res.send(account);
+    res.json(account);
   },
   async deleteAccount(req, res) {
     const accountId = req.params.accountId;
     const account = await this.accountService.deleteAccount(accountId);
-    res.send(account);
+    res.json(account);
   }
 });
 
