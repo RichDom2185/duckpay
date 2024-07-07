@@ -32,11 +32,25 @@ const SplitModal: React.FC = () => {
       .filter((v) => !isNaN(v));
     const sum = values.reduce((acc, val) => acc + val, 0);
 
-    if (sum > selectedTokenAmount!) {
+    if (values.some((value) => value <= 0)) {
+      setError("Split values must be greater than 0.");
+      return null;
+    }
+
+    if (selectedTokenAmount === null) {
+      setError("Selected token amount is not valid.");
+      return null;
+    }
+
+    if (sum > selectedTokenAmount) {
       setError(
         `Total split value of ${sum} exceeds the selected token amount of ${selectedTokenAmount}`
       );
       return null;
+    }
+
+    if (sum < selectedTokenAmount) {
+      values.push(selectedTokenAmount - sum);
     }
     setError("");
     return values;
