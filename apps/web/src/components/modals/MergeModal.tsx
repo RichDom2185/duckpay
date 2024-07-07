@@ -36,22 +36,23 @@ const MergeModal: React.FC<MergeModalProps> = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClickOutside={onClose}>
-      <form method="dialog">
-        <button
-          type="button"
-          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          onClick={onClose}
-        >
-          ✕
-        </button>
-      </form>
+    <Modal isOpen={isOpen} onClickOutside={onClose} spacing="space-4">
       <h3 className="font-bold text-lg">Confirmation</h3>
       <p className="py-4">
-        Do you want to merge token <b>{tokenAmount1}</b> with{" "}
-        <b>{tokenAmount2}</b> to create a new token with amount{" "}
-        <b>{totalTokenAmt}</b>?
+        Are you sure you want to merge the following tokens?
       </p>
+      <div className="flex gap-x-2 justify-between items-stretch text-3xl font-bold h-40">
+        <div className="rounded-2xl w-full bg-base-300 flex flex-col justify-center items-center gap-y-4">
+          <span>${tokenAmount1}</span>
+          <span>${tokenAmount2}</span>
+        </div>
+        <div className="flex flex-col justify-center">
+          <span className="select-none">&rarr;</span>
+        </div>
+        <div className="rounded-2xl w-full bg-base-300 flex flex-col justify-center items-center">
+          ${totalTokenAmt}
+        </div>
+      </div>
       <div className="modal-action">
         <button className="btn" onClick={handleConfirm}>
           Confirm
