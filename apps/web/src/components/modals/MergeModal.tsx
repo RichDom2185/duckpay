@@ -55,11 +55,11 @@ const MergeModal: React.FC<MergeModalProps> = ({
           <b>{totalTokenAmt}</b>?
         </p>
         <div className="modal-action">
+          <button className="btn btn-ghost" onClick={onClose}>
+            Cancel
+          </button>
           <button className="btn" onClick={handleConfirm}>
             Confirm
-          </button>
-          <button className="btn btn-ghost" onClick={onClose}>
-            Close
           </button>
         </div>
       </div>

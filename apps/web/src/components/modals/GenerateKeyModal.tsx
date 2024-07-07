@@ -29,7 +29,7 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <dialog className="modal" open>
+    <dialog className="modal bg-gray-500 bg-opacity-75" open>
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
