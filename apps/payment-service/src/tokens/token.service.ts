@@ -9,6 +9,7 @@ export interface ITokenService {
   ): Promise<Array<Token> | null>;
   getAllTokensForUser(accountId: string): Promise<Array<Token> | null>;
   mergeTokens(tokenIds: Array<string>): Promise<Token>;
+  splitToken(tokenId: string, amounts: number[]): Promise<Array<Token>>;
 }
 
 export default class TokenService implements ITokenService {
@@ -77,5 +78,28 @@ export default class TokenService implements ITokenService {
       accountId: tokensToMerge[0].accountId
     });
     return newToken;
+  }
+
+  async splitToken(tokenId: string, amounts: number[]): Promise<Array<Token>> {
+    const tokenToSplit = await this.tokenRepository.findById(tokenId);
+    if (!tokenToSplit) {
+      throw new Error("Token not found");
+    }
+    if (amounts.length === 0) {
+      throw new Error("No amounts to split");
+    }
+    const totalAmount = amounts.reduce((acc, amount) => acc + amount, 0);
+    if (totalAmount !== tokenToSplit.amount) {
+      throw new Error("Total amount does not match token amount");
+    }
+    return Promise.all(
+      amounts.map((amount) =>
+        this.tokenRepository.create({
+          amount,
+          currency: tokenToSplit.currency,
+          accountId: tokenToSplit.accountId
+        })
+      )
+    );
   }
 }
