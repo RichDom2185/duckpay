@@ -1,11 +1,11 @@
-import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import React from "react";
+import toast from "react-hot-toast";
+import { OnResultFunction, QrReader } from "react-qr-reader";
 import Swal from "sweetalert2";
 import { api } from "../../api/api";
 import { SessionActions } from "../../redux/slices/sessionSlice";
 import { useAppDispatch } from "../../redux/store";
 import Modal from "../common/modals/Modal";
-import toast from "react-hot-toast";
 
 interface QRScannerModalProps {
   isOpen: boolean;
@@ -23,10 +23,12 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const handleScan = async (detectedCodes: IDetectedBarcode[]) => {
-    console.log(detectedCodes);
-    const qrData = detectedCodes[0].rawValue;
+  const handleScan: OnResultFunction = async (result) => {
+    if (!result) {
+      return;
+    }
 
+    const qrData = result.getText();
     console.log("QR data:", qrData);
     const parts = qrData.split(":");
     const accountId = parts[0];
@@ -56,25 +58,26 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
       });
   };
 
+  if (!isOpen) return null;
+
   return (
-    <Modal isOpen={isOpen} onClickOutside={onClose}>
+    <Modal isOpen onClickOutside={onClose}>
       <button
         className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         onClick={onClose}
       >
         ✕
       </button>
-      <div className="scanner-container">
-        <Scanner
-          onScan={handleScan}
-          constraints={{
-            aspectRatio: 16 / 9,
-            frameRate: { ideal: 12 },
-            deviceId: { ideal: "0" },
-            facingMode: { ideal: FACING_MODE.ENVIRONMENT }
-          }}
-        />
-      </div>
+      <QrReader
+        onResult={handleScan}
+        className="rounded-2xl overflow-hidden"
+        constraints={{
+          aspectRatio: 1,
+          frameRate: { ideal: 12 },
+          deviceId: { ideal: "0" },
+          facingMode: { ideal: FACING_MODE.ENVIRONMENT }
+        }}
+      />
       <div className="flex justify-end space-x-3">
         <button className="btn" onClick={onClose}>
           Close
