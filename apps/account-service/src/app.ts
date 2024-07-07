@@ -9,7 +9,7 @@ import { setupRoutes } from "./internal/routes/routes";
 const API_BASE_PATH = "/accounts";
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(cors({credentials: true, origin: "http://localhost:3000" }))
 app.use(json());
 app.use(morgan(LOG_FORMAT));
 
