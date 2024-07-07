@@ -14,4 +14,12 @@ export class TokensApi extends PaymentBaseApi {
   public async registerTokenForUser(accountId: string, tokenId: string) {
     return this.post<Token[]>("/consume", { accountId, tokenId });
   }
+
+  public async mergeTokens(tokenIds: string[]) {
+    return this.post<Token[]>("/merge", { tokenIds });
+  }
+
+  public async splitToken(tokenId: string, amounts: number[]) {
+    return this.post<Token[]>(`/${tokenId}/split`, { amounts });
+  }
 }
