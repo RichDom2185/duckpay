@@ -63,6 +63,12 @@ export const GenerateKeyModal: React.FC<GenerateKeyModalProps> = ({
           </span>
         </button>
       </div>
+      <div>
+        <i className="text-gray-500">
+          Keep this safe and private. Anyone can use this key to get all your
+          tokens.
+        </i>
+      </div>
       <div className="flex justify-end">
         <button className="btn" onClick={onClose}>
           Close
