@@ -10,4 +10,8 @@ export class AccountsApi extends AccountApi {
   public async createNewAccount() {
     return this.post<Account>("/create");
   }
+
+  public async deleteAccount(accountId: string) {
+    return this.delete<Account>(`/${accountId}`);
+  }
 }
