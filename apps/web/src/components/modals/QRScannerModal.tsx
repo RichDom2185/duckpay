@@ -12,7 +12,7 @@ interface QRScannerModalProps {
   onClose: () => void;
 }
 
-const enum FACING_MODE {
+enum FacingMode {
   USER = "user",
   ENVIRONMENT = "environment"
 }
@@ -69,7 +69,7 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
           aspectRatio: 1,
           frameRate: { ideal: 12 },
           deviceId: { ideal: "0" },
-          facingMode: { ideal: FACING_MODE.ENVIRONMENT }
+          facingMode: { ideal: FacingMode.ENVIRONMENT }
         }}
       />
       <button className="btn btn-block" onClick={onClose}>
