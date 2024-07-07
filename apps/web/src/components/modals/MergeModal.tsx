@@ -1,10 +1,10 @@
 import React from "react";
-import Swal from "sweetalert2";
-import Modal from "../common/modals/Modal";
-import { api } from "../../api/api";
-import { useDispatch } from "react-redux";
-import { SessionActions } from "../../redux/slices/sessionSlice";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
+import Modal from "../common/modals/Modal";
 
 interface MergeModalProps {
   isOpen: boolean;
@@ -33,7 +33,8 @@ const MergeModal: React.FC<MergeModalProps> = ({
     api.tokens
       .mergeTokens([tokenId1, tokenId2])
       .then((tokens) => {
-        dispatch(SessionActions.setTokens(tokens));
+        dispatch(SessionActions.removeTokens([tokenId1, tokenId2]));
+        dispatch(SessionActions.addToken(tokens));
         Swal.fire({
           position: "center",
           icon: "success",
