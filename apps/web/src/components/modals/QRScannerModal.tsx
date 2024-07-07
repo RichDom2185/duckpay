@@ -1,6 +1,7 @@
 import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import React from "react";
 import Swal from "sweetalert2";
+import Modal from "../common/modals/Modal";
 
 interface QRScannerModalProps {
   isOpen: boolean;
@@ -44,10 +45,8 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
     setIsOpen(false);
   };
 
-  if (!isOpen) return null;
-
   return (
-    <dialog className="modal" open>
+    <Modal isOpen={isOpen}>
       <div className="modal-box">
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -72,6 +71,6 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
           </button>
         </div>
       </div>
-    </dialog>
+    </Modal>
   );
 };
