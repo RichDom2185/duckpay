@@ -31,7 +31,6 @@ const TransactionController = createController(_TransactionController, {
       accountId,
       amount
     );
-
     res.json(transaction);
   },
 
@@ -44,7 +43,6 @@ const TransactionController = createController(_TransactionController, {
     }
 
     const transaction = await this.transactionService.withdraw(tokenId);
-
     res.json(transaction);
   }
 });
