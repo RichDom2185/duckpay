@@ -25,6 +25,19 @@ const sessionSlice = createSlice({
     },
     setTokens(state, action) {
       state.tokens = action.payload;
+    },
+    addToken(state, action) {
+      if (state.tokens) {
+        state.tokens.push(action.payload);
+        return;
+      }
+      state.tokens = [action.payload];
+    },
+    removeTokens(state, action) {
+      const tokenIdsToRemove: string[] = action.payload;
+      state.tokens = state.tokens?.filter(
+        (token) => !tokenIdsToRemove.includes(token.id)
+      );
     }
   }
 });
