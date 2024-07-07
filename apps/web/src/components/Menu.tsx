@@ -6,6 +6,7 @@ import { GenerateKeyModal } from "./modals/GenerateKeyModal";
 import { QRScannerModal } from "./modals/QRScannerModal";
 import { Token } from "../types/types";
 import duckpay from "../../assets/duck-transparent-bg.png";
+import { DuckModal } from "./modals/DuckModal";
 
 interface MenuProps {
   tokens: Token[];
@@ -31,6 +32,12 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
     closeModal: closeQRScannerModal
   } = useModal();
 
+  const {
+    isOpen: isDuckModalOpen,
+    openModal: openDuckModal,
+    closeModal: closeDuckModal
+  } = useModal();
+
   const openKeyModal = () => {
     if (tokens.length === 0) {
       openEnterKeyModal();
@@ -46,7 +53,11 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
           <div className="fixed left-8 top-8">
             <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
               <li>
-                <a className="tooltip tooltip-bottom" data-tip="Duckpay">
+                <a
+                  className="tooltip tooltip-bottom"
+                  data-tip="Duckpay"
+                  onClick={openDuckModal}
+                >
                   <img src={duckpay} alt="duckpay" className="h-5 w-5" />
                 </a>
               </li>
@@ -97,6 +108,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
         isOpen={isEnterKeyModalOpen}
         onClose={closeEnterKeyModal}
       />
+      <DuckModal isOpen={isDuckModalOpen} onClose={closeDuckModal} />
     </>
   );
 };
