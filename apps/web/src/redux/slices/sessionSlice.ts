@@ -33,6 +33,15 @@ const sessionSlice = createSlice({
       }
       state.tokens = [action.payload];
     },
+    addMultipleTokens(state, action) {
+      const tokensToAdd: Token[] = action.payload;
+      if (state.tokens) {
+        state.tokens.push(...tokensToAdd);
+        return;
+      } else {
+        state.tokens = tokensToAdd;
+      }
+    },
     removeTokens(state, action) {
       const tokenIdsToRemove: string[] = action.payload;
       state.tokens = state.tokens?.filter(
