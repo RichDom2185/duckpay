@@ -1,5 +1,9 @@
 import clsx from "clsx";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
 import Constants from "../../utils/constants";
 import Modal from "../common/modals/Modal";
 
@@ -13,6 +17,7 @@ export const EnterKeyModal: React.FC<EnterKeyModalProps> = ({
   onClose
 }) => {
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleEnteredKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > Constants.ACCOUNT_KEY_LENGTH) return;
@@ -20,8 +25,17 @@ export const EnterKeyModal: React.FC<EnterKeyModalProps> = ({
   };
 
   const handleSubmitEnteredKey = () => {
-    console.log("Submitted Key: ", value);
-    onClose();
+    api.tokens
+      .getTokensUnderAccount(value)
+      .then((tokens) => {
+        dispatch(SessionActions.setTokens(tokens));
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        onClose();
+      });
   };
 
   return (
