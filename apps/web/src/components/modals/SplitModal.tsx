@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
 import { SplitActions } from "../../redux/slices/splitSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import Modal from "../common/modals/Modal";
-import { api } from "../../api/api";
-import { SessionActions } from "../../redux/slices/sessionSlice";
-import toast from "react-hot-toast";
 
 const SplitModal: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -43,16 +43,12 @@ const SplitModal: React.FC = () => {
   };
 
   const handleConfirm = () => {
-    // call api split here
     const validatedValues = validateSplitInput(splitAmount);
     if (validatedValues) {
-      console.log(`Splitting token: ${validatedValues.join(", ")}`);
-
-      //API to split
+      // API to split
       api.tokens
         .splitToken(selectedTokenId, validatedValues)
         .then((tokens) => {
-          console.log(tokens);
           dispatch(SessionActions.removeTokens([selectedTokenId]));
           dispatch(SessionActions.addMultipleTokens(tokens));
           Swal.fire({
