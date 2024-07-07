@@ -11,38 +11,36 @@ const ThemeSelector: React.FC = () => {
   const theme = useAppSelector((state) => state.session.theme);
   const dispatch = useAppDispatch();
   return (
-    <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
-      <li>
-        <a
-          className="tooltip tooltip-bottom"
-          data-tip={`Theme: ${capitalize(theme)}`}
-        >
-          <Icon
-            icon={
-              theme === "light"
-                ? "tabler:sun"
-                : theme === "dark"
-                  ? "tabler:moon"
-                  : "tabler:brightness-auto"
-            }
-            onClick={() => {
-              if (theme === "light") {
-                dispatch(SessionActions.setTheme("dark"));
-                return;
-              }
-              if (theme === "dark") {
-                dispatch(SessionActions.setTheme("auto"));
-                return;
-              }
-              if (theme === "auto") {
-                dispatch(SessionActions.setTheme("light"));
-                return;
-              }
-            }}
-          />
-        </a>
-      </li>
-    </ul>
+    <button
+      className="btn btn-lg btn-ghost text-2xl rounded-2xl mx-6 my-4 absolute right-0"
+      onClick={() => {
+        if (theme === "light") {
+          dispatch(SessionActions.setTheme("dark"));
+          return;
+        }
+        if (theme === "dark") {
+          dispatch(SessionActions.setTheme("auto"));
+          return;
+        }
+        if (theme === "auto") {
+          dispatch(SessionActions.setTheme("light"));
+          return;
+        }
+      }}
+    >
+      <Icon
+        className="-ml-[0.125em]"
+        inline
+        icon={
+          theme === "light"
+            ? "tabler:sun"
+            : theme === "dark"
+              ? "tabler:moon"
+              : "tabler:brightness-auto"
+        }
+      />
+      <span>Theme: {capitalize(theme)}</span>
+    </button>
   );
 };
 
