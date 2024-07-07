@@ -1,6 +1,10 @@
 import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
 import React from "react";
 import Swal from "sweetalert2";
+import { api } from "../../api/api";
+import { SessionActions } from "../../redux/slices/sessionSlice";
+import { useAppDispatch } from "../../redux/store";
+import { Token } from "../../types/types";
 import Modal from "../common/modals/Modal";
 
 interface QRScannerModalProps {
@@ -17,21 +21,30 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
   isOpen,
   onClose
 }) => {
-  const handleScan = (detectedCodes: IDetectedBarcode[]) => {
+  const dispatch = useAppDispatch();
+
+  const handleScan = async (detectedCodes: IDetectedBarcode[]) => {
     console.log(detectedCodes);
     const qrData = detectedCodes[0].rawValue;
 
     console.log("QR data:", qrData);
     const parts = qrData.split(":");
-    if (parts.length === 2) {
-      const accountId = parts[0];
-      const tokenId = parts[1];
+    const accountId = parts[0];
+    const tokenId = parts[1];
 
-      console.log("Account ID:", accountId);
-      console.log("Token ID:", tokenId);
-    }
+    console.log("Account ID:", accountId);
+    console.log("Token ID:", tokenId);
 
     // send API to db with accountId and tokenId
+    try {
+      const updatedUserTokens: Token[] = await api.tokens.registerTokenForUser(
+        accountId,
+        tokenId
+      );
+      dispatch(SessionActions.setTokens(updatedUserTokens));
+    } catch (err) {
+      console.log(err);
+    }
 
     Swal.fire({
       position: "center",
