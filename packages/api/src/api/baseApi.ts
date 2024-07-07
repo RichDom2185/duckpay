@@ -1,9 +1,12 @@
 import axios, { AxiosPromise, AxiosRequestConfig, isAxiosError } from "axios";
 
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8080";
+let backendUrl = "http://localhost:8000";
+
+export const setBackendUrl = (url: string) => {
+  backendUrl = url;
+};
 
 const client = axios.create({
-  baseURL: BACKEND_URL,
   headers: {
     "Content-Type": "application/json"
   }
@@ -44,7 +47,7 @@ class BaseApi {
   }
 
   private _getAxiosConfig(): AxiosRequestConfig {
-    const host = client.defaults.baseURL;
+    const host = backendUrl;
     // Default config
     const config: AxiosRequestConfig = {
       baseURL: host?.concat(this._basePath) ?? this._basePath,
