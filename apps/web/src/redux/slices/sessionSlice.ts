@@ -33,7 +33,7 @@ const sessionSlice = createSlice({
       }
       state.tokens = [action.payload];
     },
-    addMultipleTokens(state, action) {
+    addTokens(state, action) {
       const tokensToAdd: Token[] = action.payload;
       if (state.tokens) {
         state.tokens.push(...tokensToAdd);

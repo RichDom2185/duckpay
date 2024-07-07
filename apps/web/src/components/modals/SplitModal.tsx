@@ -50,7 +50,7 @@ const SplitModal: React.FC = () => {
         .splitToken(selectedTokenId, validatedValues)
         .then((tokens) => {
           dispatch(SessionActions.removeTokens([selectedTokenId]));
-          dispatch(SessionActions.addMultipleTokens(tokens));
+          dispatch(SessionActions.addTokens(tokens));
           Swal.fire({
             position: "center",
             icon: "success",
