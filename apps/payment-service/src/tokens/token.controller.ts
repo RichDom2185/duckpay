@@ -18,8 +18,9 @@ const TokenController = createController(_TokenController, {
     }
 
     const tokens = await this.tokenService.getAllTokensForUser(accountId);
-    res.send(tokens);
+    res.json(tokens);
   },
+
   async registerTokenForUser(req, res) {
     const { accountId, tokenId } = req.body;
     // TODO: Validate params
@@ -33,7 +34,7 @@ const TokenController = createController(_TokenController, {
     }
 
     const tokens = await this.tokenService.registerToken(tokenId, accountId);
-    res.send(tokens);
+    res.json(tokens);
   }
 });
 
