@@ -41,7 +41,7 @@ const Menu: React.FC<MenuProps> = ({ tokens }) => {
 
   return (
     <>
-      <div className="sticky top-8 mt-8">
+      <div className="sticky top-8 mt-8 z-50">
         <div className="text-center">
           <div className="fixed left-8 top-8">
             <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl text-xl">
