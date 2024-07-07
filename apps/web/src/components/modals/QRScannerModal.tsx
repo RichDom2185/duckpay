@@ -40,7 +40,6 @@ export const QRScannerModal: React.FC<QRScannerModalProps> = ({
       .registerTokenForUser(accountId, tokenId)
       .then((tokens) => {
         dispatch(SessionActions.setTokens(tokens));
-        console.log("Successfully scanned tokens.");
         Swal.fire({
           position: "center",
           icon: "success",

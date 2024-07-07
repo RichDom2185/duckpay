@@ -34,7 +34,6 @@ const MergeModal: React.FC<MergeModalProps> = ({
       .mergeTokens([tokenId1, tokenId2])
       .then((tokens) => {
         dispatch(SessionActions.setTokens(tokens));
-        console.log("Successfully merged tokens.");
         Swal.fire({
           position: "center",
           icon: "success",
