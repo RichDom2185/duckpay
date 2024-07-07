@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 
 const Modal: React.FC<Props> = ({ children, isOpen, onClickOutside }) => {
   return (
-    <dialog className="modal" open={isOpen}>
+    <dialog className={clsx("modal", isOpen && "modal-open")} open={isOpen}>
       <div className="modal-box">{children}</div>
       <form
         method="dialog"
