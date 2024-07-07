@@ -10,6 +10,7 @@ This project is a monorepo set up using [Turborepo](https://turbo.build).
 .
 ├── apps
 │  ├── account-service
+│  ├── atm
 │  ├── payment-service
 │  └── web
 ├── deployment
@@ -25,6 +26,7 @@ This project is a monorepo set up using [Turborepo](https://turbo.build).
 
 * `apps` - Contains the services & applications that make up the project
   * `account-service` - The account service backend (Express.js, TypeScript)
+  * `atm` - The ATM frontend application (React.js, TypeScript)
   * `payment-service` - The payment service backend (Express.js, TypeScript)
   * `web` - The frontend web application (React.js, TypeScript)
 * `deployment` - Contains the deployment configurations for the project
