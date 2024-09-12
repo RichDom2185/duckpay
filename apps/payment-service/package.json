@@ -12,7 +12,7 @@
   "dependencies": {
     "@repo/payments": "*",
     "axios": "^1.7.4",
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.18.3",
     "morgan": "^1.10.0",
