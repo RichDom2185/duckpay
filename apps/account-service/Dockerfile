@@ -3,8 +3,6 @@ FROM node:24-bookworm-slim AS base
 FROM base AS builder
 WORKDIR /app
 
-RUN yarn global add turbo
-
 COPY . .
 RUN turbo prune account-service --docker
 
