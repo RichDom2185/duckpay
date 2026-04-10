@@ -11,17 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+      - name: Enable corepack
+        run: corepack enable
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: yarn
+          node-version: 24
+          cache: pnpm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Run Prisma code generation
-        run: yarn generate
+        run: pnpm generate
       - name: Run Prettier
-        run: yarn format:ci
+        run: pnpm format:ci
       - name: Run ESLint
-        run: yarn lint
+        run: pnpm lint

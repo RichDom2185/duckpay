@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "vite --clearScreen false",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
-    "@repo/api": "*",
+    "@repo/api": "workspace:*",
     "@yudiel/react-qr-scanner": "^2.0.4",
     "custom-qr-code": "^1.1.5",
     "js-cookie": "^3.0.5",
@@ -21,30 +21,28 @@
     "react-hot-toast": "^2.4.1",
     "react-qr-reader": "^3.0.0-beta-1",
     "react-redux": "^9.1.2",
-    "react-router": "^6.30.2",
-    "react-router-dom": "^6.23.1",
+    "react-router": "^7.14.0",
     "react-sweetalert2": "^0.6.0"
   },
   "devDependencies": {
     "@iconify/react": "^5.0.1",
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^5.2.0",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
     "daisyui": "^4.12.10",
-    "eslint": "^8.57.0",
+    "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.39",
     "sass": "^1.77.6",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.3",
-    "vite": "^6.4.2"
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1",
+    "vite": "^7.3.2"
   }
 }

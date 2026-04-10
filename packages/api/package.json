@@ -1,6 +1,8 @@
 {
   "name": "@repo/api",
   "version": "1.0.0",
+  "type": "module",
+  "private": true,
   "exports": {
     ".": "./src/index.ts"
   },
@@ -10,14 +12,15 @@
     "lint": "tsc --noEmit && eslint \"src/**/*.ts*\" --max-warnings 0"
   },
   "dependencies": {
-    "@repo/accounts": "*",
-    "@repo/payments": "*",
+    "@repo/accounts": "workspace:*",
+    "@repo/payments": "workspace:*",
     "axios": "^1.15.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "eslint": "^8.57.0",
-    "typescript": "^5.5.3"
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^24.12.2",
+    "eslint": "^9.39.4",
+    "typescript": "^6.0.2"
   }
 }

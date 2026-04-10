@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - packages/*
+
+# TODO: Remove phantom dependencies
+shamefullyHoist: true

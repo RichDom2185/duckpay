@@ -1,9 +1,7 @@
-FROM node:20-bookworm-slim AS base
+FROM node:24-bookworm-slim AS base
 
 FROM base AS builder
 WORKDIR /app
-
-RUN yarn global add turbo
 
 COPY . .
 RUN turbo prune account-service --docker
@@ -13,12 +11,12 @@ WORKDIR /app
 
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
-RUN yarn install
-RUN yarn turbo generate
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+RUN pnpm install
+RUN pnpm turbo generate
 
 COPY --from=builder /app/out/full/ .
-RUN yarn turbo build --filter=account-service...
+RUN pnpm turbo build --filter=account-service...
 
 FROM base AS runner
 

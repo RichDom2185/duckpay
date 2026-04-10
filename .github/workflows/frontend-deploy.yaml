@@ -10,18 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+      - name: Enable corepack
+        run: corepack enable
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: yarn
+          node-version: 24
+          cache: pnpm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Run Prisma code generation
-        run: yarn generate
+        run: pnpm generate
       - name: Build Site
-        run: yarn build
+        run: pnpm build
         env:
           VITE_BACKEND_URL: ${{ secrets.VITE_BACKEND_URL }}
       - name: Deploy to GitHub Pages

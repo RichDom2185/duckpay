@@ -20,7 +20,12 @@ type RouteKeys = Uppercase<"Home" | "NotFound">;
 const buildRouteNames = (routes: RouteObject[], prefix = "") => {
   return routes.reduce(
     (acc, route) => {
-      const key = route.lazy?.name?.toUpperCase();
+      const lazy = route.lazy;
+      if (lazy !== undefined && typeof lazy !== "function") {
+        // TODO: Handle lazy route object
+        throw new Error("Unimplemented: Non-function lazy routes");
+      }
+      const key = lazy?.name?.toUpperCase();
       if (route.children) {
         acc = {
           ...acc,
