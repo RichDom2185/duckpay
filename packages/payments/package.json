@@ -25,6 +25,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "^24.12.2",
     "cuid": "^3.0.0",
     "eslint": "^9.39.4",
     "prisma": "^5.10.2",

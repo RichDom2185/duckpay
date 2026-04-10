@@ -356,6 +356,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
       cuid:
         specifier: ^3.0.0
         version: 3.0.0
@@ -396,6 +399,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
       eslint:
         specifier: ^9.39.4
         version: 9.39.4(jiti@1.21.6)
@@ -438,6 +444,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../config-typescript
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
       cuid:
         specifier: ^3.0.0
         version: 3.0.0
