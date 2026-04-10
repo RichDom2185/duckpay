@@ -1,35 +1,36 @@
-const { resolve } = require("node:path");
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import { resolve } from "node:path";
+import tseslint from "typescript-eslint";
 
 const project = resolve(process.cwd(), "tsconfig.json");
 
-/** @type {import("eslint").Linter.Config} */
-module.exports = {
-  extends: ["eslint:recommended", "prettier", "turbo"],
-  plugins: ["only-warn"],
-  globals: {
-    React: true,
-    JSX: true
+const compat = new FlatCompat();
+
+export default tseslint.config(
+  {
+    ignores: [
+      // Ignore dotfiles
+      ".*.js",
+      "node_modules/",
+      "dist/"
+    ]
   },
-  env: {
+  js.configs.recommended,
+  ...compat.extends("prettier"),
+  ...compat.extends("turbo"),
+  ...compat.plugins("only-warn"),
+  ...compat.env({
     node: true,
     es2020: true
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project
+  }),
+  {
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project
+        }
       }
     }
-  },
-  ignorePatterns: [
-    // Ignore dotfiles
-    ".*.js",
-    "node_modules/",
-    "dist/"
-  ],
-  overrides: [
-    {
-      files: ["*.js?(x)", "*.ts?(x)"]
-    }
-  ]
-};
+  }
+);
