@@ -12,7 +12,7 @@
   "dependencies": {
     "@mantine/hooks": "^7.11.1",
     "@reduxjs/toolkit": "^2.2.6",
-    "@repo/api": "*",
+    "@repo/api": "workspace:*",
     "@yudiel/react-qr-scanner": "^2.0.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "@iconify/react": "^5.0.1",
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",

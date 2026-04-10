@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
-    "@repo/api": "*",
+    "@repo/api": "workspace:*",
     "@yudiel/react-qr-scanner": "^2.0.4",
     "custom-qr-code": "^1.1.5",
     "js-cookie": "^3.0.5",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@iconify/react": "^5.0.1",
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

@@ -11,12 +11,12 @@ WORKDIR /app
 
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
-RUN yarn install
-RUN yarn turbo generate
+COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+RUN pnpm install
+RUN pnpm turbo generate
 
 COPY --from=builder /app/out/full/ .
-RUN yarn turbo build --filter=payment-service...
+RUN pnpm turbo build --filter=payment-service...
 
 FROM base AS runner
 
