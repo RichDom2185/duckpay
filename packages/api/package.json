@@ -12,7 +12,7 @@
   "dependencies": {
     "@repo/accounts": "*",
     "@repo/payments": "*",
-    "axios": "^1.13.5"
+    "axios": "^1.15.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
