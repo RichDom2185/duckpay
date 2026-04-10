@@ -26,7 +26,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "cuid": "^3.0.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.39.4",
     "prisma": "^5.10.2",
     "rimraf": "^5.0.5",
     "tsup": "^8.0.2",
