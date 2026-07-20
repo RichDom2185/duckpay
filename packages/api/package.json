@@ -14,7 +14,7 @@
   "dependencies": {
     "@repo/accounts": "workspace:*",
     "@repo/payments": "workspace:*",
-    "axios": "^1.16.0"
+    "axios": "^1.18.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
